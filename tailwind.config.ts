@@ -13,6 +13,17 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+      fontSize: {
+        '5xl': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        '6xl': ['3.75rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        '7xl': ['4.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        '8xl': ['6rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        '9xl': ['8rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
