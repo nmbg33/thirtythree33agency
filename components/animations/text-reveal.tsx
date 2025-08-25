@@ -3,10 +3,10 @@
 import { useEffect, useRef, ReactNode } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SplitText } from 'gsap/SplitText';
+import { SplitText } from '@/lib/split-text';
 
 if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger, SplitText);
+  gsap.registerPlugin(ScrollTrigger);
 }
 
 interface TextRevealProps {
