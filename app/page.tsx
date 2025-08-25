@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -61,28 +61,16 @@ export default function HomePage() {
     }
   };
 
-  const letterVariants = {
-    hidden: { y: 100, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: [0.6, -0.05, 0.01, 0.99]
-      }
-    }
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted');
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Custom cursor */}
       <motion.div
-        className="fixed w-4 h-4 bg-accent rounded-full pointer-events-none z-50 mix-blend-difference"
+        className="fixed w-4 h-4 bg-accent/50 rounded-full pointer-events-none z-50 mix-blend-difference hidden md:block"
         animate={{
           x: mousePosition.x - 8,
           y: mousePosition.y - 8,
@@ -112,7 +100,7 @@ export default function HomePage() {
               thirtythree
             </motion.div>
             <div className="hidden md:flex items-center space-x-8">
-              {['Services', 'Work', 'About', 'Contact'].map((item, i) => (
+              {['Services', 'Work', 'About', 'Contact'].map((item) => (
                 <motion.a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -138,9 +126,9 @@ export default function HomePage() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Animated Background */}
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0">
           <motion.div
             style={{ y: y1 }}
             className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-accent/20 to-primary/10 rounded-full blur-3xl"
@@ -150,9 +138,8 @@ export default function HomePage() {
             className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-l from-accent/10 to-primary/20 rounded-full blur-3xl"
           />
           <motion.div
-            style={{ y: y1 }}
             className="absolute top-1/2 left-1/4 w-32 h-32 bg-primary/5 rotate-45 blur-xl"
-            animate={{ rotate: 360 }}
+            animate={{ rotate: [0, 360] }}
             transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
           />
         </div>
@@ -168,34 +155,19 @@ export default function HomePage() {
             className="max-w-6xl mx-auto text-center"
           >
             <motion.div variants={itemVariants}>
-              <Badge variant="secondary" className="mb-8 text-sm px-4 py-2">
+              <Badge variant="secondary" className="mb-8 text-sm px-4 py-2 backdrop-blur-sm">
                 Belgrade-based brand agency
               </Badge>
             </motion.div>
             
-            <div className="mb-8">
-              {['We build brands', 'that grow'].map((line, lineIndex) => (
-                <div key={lineIndex} className="overflow-hidden">
-                  <motion.h1
-                    variants={itemVariants}
-                    className={`text-5xl md:text-7xl lg:text-9xl font-bold tracking-tight ${
-                      lineIndex === 1 ? 'text-muted-foreground' : ''
-                    }`}
-                  >
-                    {line.split('').map((char, charIndex) => (
-                      <motion.span
-                        key={charIndex}
-                        variants={letterVariants}
-                        className="inline-block"
-                        custom={charIndex}
-                      >
-                        {char === ' ' ? '\u00A0' : char}
-                      </motion.span>
-                    ))}
-                  </motion.h1>
-                </div>
-              ))}
-            </div>
+            <motion.div variants={itemVariants} className="mb-8">
+              <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tight">
+                We build brands
+              </h1>
+              <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tight text-muted-foreground">
+                that grow
+              </h1>
+            </motion.div>
             
             <motion.p
               variants={itemVariants}
@@ -210,12 +182,12 @@ export default function HomePage() {
               className="flex flex-col sm:flex-row gap-6 justify-center"
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90">
+                <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 shadow-lg">
                   Start Your Project
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+                <Button variant="outline" size="lg" className="text-lg px-8 py-6 backdrop-blur-sm">
                   View Our Work
                 </Button>
               </motion.div>
@@ -247,17 +219,20 @@ export default function HomePage() {
               {
                 icon: '⚡',
                 title: 'Brand Building',
-                description: 'Comprehensive brand strategy, visual identity, and positioning that resonates with your target audience and sets you apart from competition.'
+                description: 'Comprehensive brand strategy, visual identity, and positioning that resonates with your target audience and sets you apart from competition.',
+                color: 'from-amber-400/20 to-orange-600/20'
               },
               {
                 icon: '💻',
                 title: 'Web Development',
-                description: 'Custom websites and digital experiences that combine stunning design with powerful functionality to drive conversions and engagement.'
+                description: 'Custom websites and digital experiences that combine stunning design with powerful functionality to drive conversions and engagement.',
+                color: 'from-blue-400/20 to-purple-600/20'
               },
               {
                 icon: '📈',
                 title: 'Growth Strategy',
-                description: 'Data-driven growth strategies and innovative ideas that scale your business and maximize ROI across all marketing channels.'
+                description: 'Data-driven growth strategies and innovative ideas that scale your business and maximize ROI across all marketing channels.',
+                color: 'from-green-400/20 to-emerald-600/20'
               }
             ].map((service, index) => (
               <motion.div
@@ -266,13 +241,14 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="group"
               >
-                <Card className="group h-full border-0 bg-background/50 backdrop-blur-sm hover:shadow-2xl transition-all duration-500">
+                <Card className="h-full border-0 bg-background/50 backdrop-blur-sm hover:shadow-2xl transition-all duration-500">
                   <CardContent className="p-8">
                     <motion.div
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      className="text-5xl mb-6"
+                      whileHover={{ scale: 1.2, rotate: 10 }}
+                      className={`w-16 h-16 rounded-2xl mb-6 flex items-center justify-center text-2xl bg-gradient-to-r ${service.color} group-hover:shadow-lg transition-all duration-300`}
                     >
                       {service.icon}
                     </motion.div>
@@ -289,7 +265,7 @@ export default function HomePage() {
       </section>
 
       {/* Portfolio Preview */}
-      <section className="py-32 bg-background">
+      <section id="work" className="py-32 bg-background">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -307,25 +283,31 @@ export default function HomePage() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {[1, 2, 3, 4].map((item, index) => (
+            {[
+              { name: 'TechCorp Rebrand', type: 'Brand Identity', color: 'from-purple-400/30 to-pink-600/30' },
+              { name: 'Startup Launch', type: 'Web Design', color: 'from-blue-400/30 to-cyan-600/30' },
+              { name: 'E-commerce Platform', type: 'Development', color: 'from-emerald-400/30 to-teal-600/30' },
+              { name: 'Growth Campaign', type: 'Strategy', color: 'from-orange-400/30 to-red-600/30' }
+            ].map((project, index) => (
               <motion.div
-                key={item}
+                key={project.name}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.05 }}
                 className="group cursor-pointer"
               >
-                <div className="aspect-video bg-gradient-to-br from-accent/20 to-primary/10 rounded-2xl overflow-hidden relative">
+                <div className={`aspect-video bg-gradient-to-br ${project.color} rounded-2xl overflow-hidden relative backdrop-blur-sm`}>
                   <motion.div
-                    className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300"
-                    whileHover={{ scale: 1.05 }}
-                  />
-                  <div className="absolute bottom-6 left-6 text-white">
-                    <h3 className="text-xl font-bold">Project {item}</h3>
-                    <p className="text-white/80">Brand & Web Design</p>
-                  </div>
+                    className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-end"
+                    whileHover={{ backdropFilter: 'blur(2px)' }}
+                  >
+                    <div className="p-6 text-white">
+                      <h3 className="text-xl font-bold mb-1">{project.name}</h3>
+                      <p className="text-white/80">{project.type}</p>
+                    </div>
+                  </motion.div>
                 </div>
               </motion.div>
             ))}
@@ -367,21 +349,21 @@ export default function HomePage() {
                 className="relative"
               >
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="aspect-square bg-gradient-to-br from-accent/20 to-primary/10 rounded-3xl relative overflow-hidden"
+                  whileHover={{ scale: 1.05, rotate: 2 }}
+                  className="aspect-square bg-gradient-to-br from-accent/30 to-primary/20 rounded-3xl relative overflow-hidden backdrop-blur-sm"
                 >
                   <div className="absolute inset-8 bg-background/80 backdrop-blur-sm rounded-2xl flex items-center justify-center">
                     <div className="text-center">
                       <motion.div
                         initial={{ scale: 0 }}
                         whileInView={{ scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
+                        transition={{ duration: 0.8, delay: 0.3, type: 'spring' }}
                         viewport={{ once: true }}
-                        className="text-6xl font-bold mb-2"
+                        className="text-6xl font-bold mb-2 bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent"
                       >
                         33
                       </motion.div>
-                      <div className="text-muted-foreground">Projects Delivered</div>
+                      <div className="text-muted-foreground font-medium">Projects Delivered</div>
                     </div>
                   </div>
                 </motion.div>
@@ -423,26 +405,26 @@ export default function HomePage() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <motion.div whileFocus={{ scale: 1.02 }}>
                       <label className="block text-sm font-medium mb-2">Name</label>
-                      <Input placeholder="Your name" className="bg-background/50" />
+                      <Input placeholder="Your name" className="bg-background/50 border-border/50" />
                     </motion.div>
                     <motion.div whileFocus={{ scale: 1.02 }}>
                       <label className="block text-sm font-medium mb-2">Email</label>
-                      <Input type="email" placeholder="your@email.com" className="bg-background/50" />
+                      <Input type="email" placeholder="your@email.com" className="bg-background/50 border-border/50" />
                     </motion.div>
                   </div>
                   <motion.div whileFocus={{ scale: 1.02 }}>
                     <label className="block text-sm font-medium mb-2">Company</label>
-                    <Input placeholder="Your company" className="bg-background/50" />
+                    <Input placeholder="Your company" className="bg-background/50 border-border/50" />
                   </motion.div>
                   <motion.div whileFocus={{ scale: 1.02 }}>
                     <label className="block text-sm font-medium mb-2">Project Details</label>
                     <Textarea 
                       placeholder="Tell us about your project..." 
-                      className="bg-background/50 min-h-32"
+                      className="bg-background/50 border-border/50 min-h-32"
                     />
                   </motion.div>
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                    <Button type="submit" size="lg" className="w-full text-lg py-6">
+                    <Button type="submit" size="lg" className="w-full text-lg py-6 shadow-lg">
                       Schedule a Meeting
                     </Button>
                   </motion.div>
@@ -463,15 +445,15 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="flex flex-col md:flex-row justify-between items-center"
           >
-            <div className="text-2xl font-bold mb-4 md:mb-0">
+            <motion.div whileHover={{ scale: 1.05 }} className="text-2xl font-bold mb-4 md:mb-0">
               thirtythree
-            </div>
+            </motion.div>
             <div className="flex items-center space-x-8">
               <span className="text-muted-foreground">Belgrade, Serbia</span>
               <motion.a
                 href="mailto:hello@thirtythree.rs"
-                whileHover={{ y: -2 }}
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                whileHover={{ y: -2, color: 'hsl(var(--foreground))' }}
+                className="text-muted-foreground transition-colors"
               >
                 hello@thirtythree.rs
               </motion.a>
