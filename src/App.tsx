@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navbar from "./components/Navbar";
 import { useI18n } from "./i18n/I18nProvider";
+import { Link } from "react-router-dom";
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
