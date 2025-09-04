@@ -180,7 +180,7 @@ export default function BookCall() {
                   modifiersClassNames={{
                     selected: "bg-yellow-400 text-black",
                   }}
-                  className="mb-6 mx-auto"
+                  className="mb-6 mx-auto max-w-[320px]"
                 />
 
                 <h3 className="text-xl font-semibold mb-3 text-center sm:text-left">
