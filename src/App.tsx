@@ -93,7 +93,7 @@ function App() {
               thirtythree
             </motion.div>
             <div className="hidden md:flex items-center space-x-8">
-              {['Services', 'Work', 'About', 'Contact'].map((item) => (
+              {['Services', 'Strategy', 'About', 'Contact'].map((item) => (
                 <motion.a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -179,11 +179,6 @@ function App() {
                   Start Your Project
                 </button>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <button className="text-lg px-8 py-4 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                  View Our Work
-                </button>
-              </motion.div>
             </motion.div>
           </motion.div>
         </motion.div>
@@ -256,7 +251,7 @@ function App() {
       </section>
 
       {/* Portfolio Preview */}
-      <section id="work" className="py-32 bg-white">
+      <section id="strategy" className="py-32 bg-white">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -266,39 +261,55 @@ function App() {
             className="max-w-4xl mx-auto text-center mb-20"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Our work
+              Our Strategy
             </h2>
             <p className="text-xl text-gray-600">
-              Award-winning projects that drive results
+              We follow the latest trends and design styles while balancing usability, accessibility, performance, and bold storytelling.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {[
-              { name: 'TechCorp Rebrand', type: 'Brand Identity', color: 'from-purple-200 to-pink-300' },
-              { name: 'Startup Launch', type: 'Web Design', color: 'from-blue-200 to-cyan-300' },
-              { name: 'E-commerce Platform', type: 'Development', color: 'from-emerald-200 to-teal-300' },
-              { name: 'Growth Campaign', type: 'Strategy', color: 'from-orange-200 to-red-300' }
-            ].map((project, index) => (
+              {
+                icon: '🔎',
+                title: 'Discover',
+                badge: 'Research-first',
+                description: 'Deep research, audits, and market insight to inform every decision.'
+              },
+              {
+                icon: '✏️',
+                title: 'Design',
+                badge: 'Trends 2025',
+                description: 'Modern aesthetics, advanced typography, and motion to create desire.'
+              },
+              {
+                icon: '⚙️',
+                title: 'Develop',
+                badge: 'Performance',
+                description: 'Lightning-fast builds with accessibility and SEO baked in from day one.'
+              },
+              {
+                icon: '🚀',
+                title: 'Grow',
+                badge: 'Iterate',
+                description: 'Continuous optimization, content, and campaigns that compound results.'
+              },
+            ].map((item, i) => (
               <motion.div
-                key={project.name}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
+                key={item.title}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
-                className="group cursor-pointer"
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="p-6 rounded-2xl bg-gray-50 hover:bg-white border border-gray-200 hover:shadow-xl transition-all"
               >
-                <div className={`aspect-video bg-gradient-to-br ${project.color} rounded-2xl overflow-hidden relative`}>
-                  <motion.div
-                    className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-end"
-                  >
-                    <div className="p-6 text-gray-800">
-                      <h3 className="text-xl font-bold mb-1">{project.name}</h3>
-                      <p className="text-gray-700">{project.type}</p>
-                    </div>
-                  </motion.div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-2xl">{item.icon}</div>
+                  <span className="text-xs px-2.5 py-1 rounded-full bg-yellow-100 text-yellow-700 border border-yellow-200">{item.badge}</span>
                 </div>
+                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -344,16 +355,22 @@ function App() {
                 >
                   <div className="absolute inset-8 bg-white/80 backdrop-blur-sm rounded-2xl flex items-center justify-center">
                     <div className="text-center">
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.3, type: 'spring' }}
-                        viewport={{ once: true }}
-                        className="text-6xl font-bold mb-2 bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent"
-                      >
-                        33
-                      </motion.div>
-                      <div className="text-gray-600 font-medium">Projects Delivered</div>
+                      <div className="relative w-40 h-40 mx-auto">
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-yellow-400 to-orange-500 opacity-20" />
+                        <div className="absolute inset-2 rounded-full bg-white shadow-inner" />
+                        <motion.div
+                          initial={{ scale: 0.9, opacity: 0 }}
+                          whileInView={{ scale: 1, opacity: 1 }}
+                          transition={{ duration: 0.8, delay: 0.2 }}
+                          viewport={{ once: true }}
+                          className="absolute inset-0 rounded-full ring-2 ring-yellow-400/60 animate-pulse"
+                        />
+                        <div className="relative flex items-center justify-center h-full">
+                          <span className="text-5xl font-bold bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent">50+</span>
+                        </div>
+                      </div>
+                      <div className="mt-4 text-gray-700 font-semibold">Projects delivered</div>
+                      <p className="text-gray-500 text-sm mt-1">From startups to enterprises across 12 industries</p>
                     </div>
                   </div>
                 </motion.div>
@@ -374,8 +391,8 @@ function App() {
             className="max-w-4xl mx-auto text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Let's create something 
-              <span className="text-gray-500">amazing</span>
+              Let's create something
+              <span className="block mt-2 text-gray-500 tracking-wide">amazing</span>
             </h2>
             <p className="text-xl text-gray-600">
               Ready to transform your brand? Schedule a consultation and let's discuss your project.
