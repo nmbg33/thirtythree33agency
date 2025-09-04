@@ -3,6 +3,7 @@ import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
+import { useI18n } from "../i18n/I18nProvider";
 
 function formatTime(date: Date) {
   return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
@@ -24,6 +25,7 @@ function generateTimeSlots(date: Date | undefined) {
 
 export default function BookCall() {
   const [firstName, setFirstName] = useState("");
+  const { t } = useI18n();
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [selectedDay, setSelectedDay] = useState<Date | undefined>(undefined);
@@ -50,9 +52,9 @@ export default function BookCall() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">Book a call</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">{t('book.title')}</h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Rezerviši termin za uvodni poziv. Odaberi dan i vreme, a potvrdu ćeš dobiti na email.
+              {t('book.lead')}
             </p>
           </motion.div>
 
@@ -68,7 +70,7 @@ export default function BookCall() {
               >
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium mb-2">Ime</label>
+                    <label className="block text-sm font-medium mb-2">{t('book.firstName')}</label>
                     <input
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
@@ -78,7 +80,7 @@ export default function BookCall() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Prezime</label>
+                    <label className="block text-sm font-medium mb-2">{t('book.lastName')}</label>
                     <input
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
@@ -89,7 +91,7 @@ export default function BookCall() {
                   </div>
                 </div>
                 <div className="mt-6">
-                  <label className="block text-sm font-medium mb-2">Email</label>
+                  <label className="block text-sm font-medium mb-2">{t('book.email')}</label>
                   <input
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -105,7 +107,7 @@ export default function BookCall() {
                     className="w-full text-lg py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={!firstName || !lastName || !email || !selectedDay || !selectedTime}
                   >
-                    Potvrdi termin
+                    {t('book.confirm')}
                   </button>
                 </div>
               </motion.form>
@@ -117,7 +119,7 @@ export default function BookCall() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="p-8 bg-white rounded-2xl border border-gray-200"
               >
-                <h3 className="text-xl font-semibold mb-4">Odaberi dan</h3>
+                <h3 className="text-xl font-semibold mb-4">{t('book.pickDay')}</h3>
                 <DayPicker
                   mode="single"
                   selected={selectedDay}
@@ -129,10 +131,10 @@ export default function BookCall() {
                   className="mb-6"
                 />
 
-                <h3 className="text-xl font-semibold mb-3">Izaberi vreme</h3>
+                <h3 className="text-xl font-semibold mb-3">{t('book.pickTime')}</h3>
                 <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-64 overflow-y-auto pr-1">
                   {timeSlots.length === 0 && (
-                    <div className="col-span-full text-gray-500">Prvo odaberi dan.</div>
+                    <div className="col-span-full text-gray-500">{t('book.pickDay')}</div>
                   )}
                   {timeSlots.map((t) => {
                     const isSelected = selectedTime && t.getHours() === selectedTime.getHours() && t.getMinutes() === selectedTime.getMinutes();
@@ -160,12 +162,12 @@ export default function BookCall() {
               className="max-w-2xl mx-auto text-center p-10 bg-gray-50 rounded-2xl border border-gray-200"
             >
               <div className="text-6xl mb-4">✅</div>
-              <h3 className="text-2xl font-semibold mb-3">Termin je uspešno rezervisan</h3>
+              <h3 className="text-2xl font-semibold mb-3">{t('book.success.title')}</h3>
               <p className="text-gray-700 mb-6">
-                Hvala {firstName}! Pošaljemo potvrdu i link za poziv na {email}. Proveri inbox i spam folder.
+                {t('book.success.body', { firstName, email })}
               </p>
               <div className="text-sm text-gray-600">
-                Odabrano: {selectedDay?.toLocaleDateString()} u {selectedTime ? formatTime(selectedTime) : ""}
+                {selectedDay?.toLocaleDateString()} • {selectedTime ? formatTime(selectedTime) : ""}
               </div>
             </motion.div>
           )}
