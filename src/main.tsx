@@ -9,12 +9,12 @@ import { I18nProvider } from "./i18n/I18nProvider";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <I18nProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/book" element={<BookCall />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </I18nProvider>
   </React.StrictMode>,
 );
