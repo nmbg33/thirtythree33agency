@@ -140,7 +140,10 @@ function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link to="/book" className="text-lg px-8 py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg">
+                <Link
+                  to="/book"
+                  className="text-lg px-8 py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg"
+                >
                   {t("hero.cta.primary")}
                 </Link>
               </motion.div>
