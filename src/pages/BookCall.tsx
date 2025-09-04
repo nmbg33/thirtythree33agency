@@ -107,7 +107,7 @@ export default function BookCall() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.1 }}
-                className="w-full max-w-md mx-auto p-8 bg-gray-50 rounded-2xl border border-gray-200 text-center sm:text-left -translate-x-[4px] sm:translate-x-0"
+                className="w-full max-w-md mx-auto p-8 bg-gray-50 rounded-2xl border border-gray-200 text-center sm:text-left"
               >
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -174,7 +174,7 @@ export default function BookCall() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="w-full max-w-md mx-auto p-8 bg-white rounded-2xl border border-gray-200 text-center sm:text-left -translate-x-[4px] sm:translate-x-0"
+                className="w-full max-w-md mx-auto p-8 bg-white rounded-2xl border border-gray-200 text-center sm:text-left"
               >
                 <h3 className="text-xl font-semibold mb-4 text-center sm:text-left">
                   {t("book.pickDay")}
@@ -193,7 +193,7 @@ export default function BookCall() {
                 <h3 className="text-xl font-semibold mb-3 text-center sm:text-left">
                   {t("book.pickTime")}
                 </h3>
-                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-64 overflow-y-auto px-1 justify-items-center mx-auto max-w-[320px]">
+                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-64 overflow-y-auto px-1 justify-items-center mx-auto w-full max-w-[320px]">
                   {timeSlots.length === 0 && (
                     <div className="col-span-full text-gray-500">
                       {t("book.pickDay")}
