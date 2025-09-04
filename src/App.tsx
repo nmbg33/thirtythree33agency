@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -75,50 +76,7 @@ function App() {
         }}
       />
 
-      {/* Navigation */}
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-          isScrolled
-            ? "bg-white/95 backdrop-blur-md border-b border-gray-200"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="container mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="text-2xl font-bold tracking-tight cursor-pointer"
-            >
-              thirtythree
-            </motion.div>
-            <div className="hidden md:flex items-center space-x-8">
-              {["Services", "Strategy", "About", "Contact"].map((item) => (
-                <motion.a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  whileHover={{ y: -2 }}
-                  className="text-gray-600 hover:text-gray-900 transition-colors relative group"
-                >
-                  {item}
-                  <motion.div
-                    className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-400"
-                    whileHover={{ width: "100%" }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </motion.a>
-              ))}
-            </div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <button className="hidden md:block px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                Book a Call
-              </button>
-            </motion.div>
-          </div>
-        </div>
-      </motion.nav>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
