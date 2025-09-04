@@ -1,11 +1,40 @@
 /* DayPicker centering adjustments for mobile */
-.rdp { margin-left: auto; margin-right: auto; }
+.rdp {
+  margin-left: auto;
+  margin-right: auto;
+}
 /* Stack nav above month and center everything on small screens */
 @media (max-width: 640px) {
-  .rdp-months { display: flex; flex-direction: column; align-items: center; }
-  .rdp-root { width: 300px; margin-left: auto; margin-right: auto; }
-  .rdp-month { margin-left: auto; margin-right: auto; width: 300px; }
-  .rdp-nav { position: static !important; width: 100%; max-width: 300px; margin-left: auto; margin-right: auto; margin-bottom: 8px; display: flex; justify-content: space-between; }
+  .rdp-months {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .rdp-root {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .rdp-month {
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+  }
+  .rdp-nav {
+    position: static !important;
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
 }
-.rdp-caption { text-align: center; }
-.rdp-caption_label { text-align: center; display: block; }
+.rdp-caption {
+  text-align: center;
+}
+.rdp-caption_label {
+  text-align: center;
+  display: block;
+}
