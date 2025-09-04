@@ -107,7 +107,7 @@ export default function BookCall() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.1 }}
-                className="w-full max-w-md mx-auto p-8 bg-gray-50 rounded-2xl border border-gray-200 text-center sm:text-left"
+                className="w-full max-w-md mx-auto p-8 bg-gray-50 rounded-2xl border border-gray-200 text-center sm:text-left -translate-x-[4px] sm:translate-x-0"
               >
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -174,7 +174,7 @@ export default function BookCall() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="w-full max-w-md mx-auto p-8 bg-white rounded-2xl border border-gray-200 text-center sm:text-left"
+                className="w-full max-w-md mx-auto p-8 bg-white rounded-2xl border border-gray-200 text-center sm:text-left -translate-x-[4px] sm:translate-x-0"
               >
                 <h3 className="text-xl font-semibold mb-4 text-center sm:text-left">
                   {t("book.pickDay")}
