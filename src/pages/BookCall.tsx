@@ -101,7 +101,7 @@ export default function BookCall() {
           </motion.div>
 
           {!submitted ? (
-            <div className="grid lg:grid-cols-2 gap-10 place-items-center w-full max-w-[380px] mx-auto">
+            <div className="grid lg:grid-cols-2 gap-10 place-items-center w-full max-w-[360px] mx-auto">
               <motion.form
                 onSubmit={handleSubmit}
                 initial={{ opacity: 0, y: 40 }}
@@ -194,7 +194,7 @@ export default function BookCall() {
                 <h3 className="text-xl font-semibold mb-3 text-center sm:text-left">
                   {t("book.pickTime")}
                 </h3>
-                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-64 overflow-y-auto px-1 justify-items-center mx-auto w-full max-w-[300px]">
+                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-64 overflow-y-auto px-0 justify-items-center mx-auto w-full max-w-[300px]">
                   {timeSlots.length === 0 && (
                     <div className="col-span-full text-gray-500">
                       {t("book.pickDay")}
