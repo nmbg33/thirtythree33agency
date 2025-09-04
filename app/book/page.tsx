@@ -41,12 +41,16 @@ export default function BookPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const timeSlots = useMemo(() => generateTimeSlots(selectedDay), [selectedDay]);
+  const timeSlots = useMemo(
+    () => generateTimeSlots(selectedDay),
+    [selectedDay],
+  );
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    if (!firstName || !lastName || !email || !selectedDay || !selectedTime) return;
+    if (!firstName || !lastName || !email || !selectedDay || !selectedTime)
+      return;
     try {
       setLoading(true);
       const scheduled = new Date(selectedDay);
@@ -101,7 +105,8 @@ export default function BookPage() {
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-4">Book a call</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Reserve a time for an intro call. Pick a day and time — you will receive a confirmation via email.
+              Reserve a time for an intro call. Pick a day and time — you will
+              receive a confirmation via email.
             </p>
           </motion.div>
 
@@ -112,7 +117,9 @@ export default function BookPage() {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium mb-2">First name</label>
+                        <label className="block text-sm font-medium mb-2">
+                          First name
+                        </label>
                         <Input
                           value={firstName}
                           onChange={(e) => setFirstName(e.target.value)}
@@ -121,7 +128,9 @@ export default function BookPage() {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium mb-2">Last name</label>
+                        <label className="block text-sm font-medium mb-2">
+                          Last name
+                        </label>
                         <Input
                           value={lastName}
                           onChange={(e) => setLastName(e.target.value)}
@@ -131,7 +140,9 @@ export default function BookPage() {
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Email</label>
+                      <label className="block text-sm font-medium mb-2">
+                        Email
+                      </label>
                       <Input
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -140,7 +151,9 @@ export default function BookPage() {
                       />
                     </div>
 
-                    {error && <div className="text-sm text-red-600">{error}</div>}
+                    {error && (
+                      <div className="text-sm text-red-600">{error}</div>
+                    )}
 
                     <Button
                       type="submit"
@@ -174,7 +187,9 @@ export default function BookPage() {
                   <h3 className="text-xl font-semibold mb-3">Pick a time</h3>
                   <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-64 overflow-y-auto">
                     {timeSlots.length === 0 && (
-                      <div className="col-span-full text-muted-foreground">Pick a day</div>
+                      <div className="col-span-full text-muted-foreground">
+                        Pick a day
+                      </div>
                     )}
                     {timeSlots.map((t) => {
                       const isSelected =
@@ -208,12 +223,16 @@ export default function BookPage() {
               className="max-w-2xl mx-auto text-center p-10 border rounded-2xl"
             >
               <div className="text-6xl mb-4">✅</div>
-              <h3 className="text-2xl font-semibold mb-3">Your call is booked</h3>
+              <h3 className="text-2xl font-semibold mb-3">
+                Your call is booked
+              </h3>
               <p className="text-muted-foreground mb-6">
-                Thank you {firstName}! We sent a confirmation to {email}. Please check your inbox (and spam folder).
+                Thank you {firstName}! We sent a confirmation to {email}. Please
+                check your inbox (and spam folder).
               </p>
               <div className="text-sm text-muted-foreground">
-                {selectedDay?.toLocaleDateString()} • {selectedTime ? formatTime(selectedTime) : ""}
+                {selectedDay?.toLocaleDateString()} •{" "}
+                {selectedTime ? formatTime(selectedTime) : ""}
               </div>
             </motion.div>
           )}
