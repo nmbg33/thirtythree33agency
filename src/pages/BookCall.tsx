@@ -35,6 +35,8 @@ export default function BookCall() {
   const [selectedDay, setSelectedDay] = useState<Date | undefined>(undefined);
   const [selectedTime, setSelectedTime] = useState<Date | undefined>(undefined);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const timeSlots = useMemo(
     () => generateTimeSlots(selectedDay),
