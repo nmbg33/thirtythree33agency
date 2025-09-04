@@ -111,16 +111,16 @@ function App() {
           >
             <motion.div variants={itemVariants}>
               <span className="inline-block mb-8 text-sm px-4 py-2 bg-gray-100 rounded-full">
-                {t('hero.badge')}
+                {t("hero.badge")}
               </span>
             </motion.div>
 
             <motion.div variants={itemVariants} className="mb-8">
               <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tight">
-                {t('hero.title.1')}
+                {t("hero.title.1")}
               </h1>
               <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tight text-gray-500">
-                {t('hero.title.2')}
+                {t("hero.title.2")}
               </h1>
             </motion.div>
 
@@ -128,7 +128,7 @@ function App() {
               variants={itemVariants}
               className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed"
             >
-              {t('hero.subtitle')}
+              {t("hero.subtitle")}
             </motion.p>
 
             <motion.div
@@ -140,7 +140,7 @@ function App() {
                 whileTap={{ scale: 0.95 }}
               >
                 <button className="text-lg px-8 py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg">
-                  {t('hero.cta.primary')}
+                  {t("hero.cta.primary")}
                 </button>
               </motion.div>
             </motion.div>
@@ -158,30 +158,30 @@ function App() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center mb-20"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">{t('services.title')}</h2>
-            <p className="text-xl text-gray-600">
-              {t('services.subtitle')}
-            </p>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              {t("services.title")}
+            </h2>
+            <p className="text-xl text-gray-600">{t("services.subtitle")}</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
                 icon: "⚡",
-                title: t('services.0.title'),
-                description: t('services.0.desc'),
+                title: t("services.0.title"),
+                description: t("services.0.desc"),
                 color: "from-amber-100 to-orange-200",
               },
               {
                 icon: "💻",
-                title: t('services.1.title'),
-                description: t('services.1.desc'),
+                title: t("services.1.title"),
+                description: t("services.1.desc"),
                 color: "from-blue-100 to-purple-200",
               },
               {
                 icon: "📈",
-                title: t('services.2.title'),
-                description: t('services.2.desc'),
+                title: t("services.2.title"),
+                description: t("services.2.desc"),
                 color: "from-green-100 to-emerald-200",
               },
             ].map((service, index) => (
@@ -223,38 +223,36 @@ function App() {
             className="max-w-4xl mx-auto text-center mb-20"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              {t('strategy.title')}
+              {t("strategy.title")}
             </h2>
-            <p className="text-xl text-gray-600">
-              {t('strategy.subtitle')}
-            </p>
+            <p className="text-xl text-gray-600">{t("strategy.subtitle")}</p>
           </motion.div>
 
           <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {[
               {
                 icon: "🔎",
-                title: t('strategy.0.title'),
-                badge: t('strategy.0.badge'),
-                description: t('strategy.0.desc'),
+                title: t("strategy.0.title"),
+                badge: t("strategy.0.badge"),
+                description: t("strategy.0.desc"),
               },
               {
                 icon: "✏️",
-                title: t('strategy.1.title'),
-                badge: t('strategy.1.badge'),
-                description: t('strategy.1.desc'),
+                title: t("strategy.1.title"),
+                badge: t("strategy.1.badge"),
+                description: t("strategy.1.desc"),
               },
               {
                 icon: "⚙️",
-                title: t('strategy.2.title'),
-                badge: t('strategy.2.badge'),
-                description: t('strategy.2.desc'),
+                title: t("strategy.2.title"),
+                badge: t("strategy.2.badge"),
+                description: t("strategy.2.desc"),
               },
               {
                 icon: "🚀",
-                title: t('strategy.3.title'),
-                badge: t('strategy.3.badge'),
-                description: t('strategy.3.desc'),
+                title: t("strategy.3.title"),
+                badge: t("strategy.3.badge"),
+                description: t("strategy.3.desc"),
               },
             ].map((item, i) => (
               <motion.div
@@ -294,14 +292,14 @@ function App() {
                 viewport={{ once: true }}
               >
                 <h2 className="text-4xl md:text-5xl font-bold mb-8">
-                  {t('about.title.main')}
-                  <span className="text-gray-500"> {t('about.title.em')}</span>
+                  {t("about.title.main")}
+                  <span className="text-gray-500"> {t("about.title.em")}</span>
                 </h2>
                 <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  {t('about.p1')}
+                  {t("about.p1")}
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  {t('about.p2')}
+                  {t("about.p2")}
                 </p>
               </motion.div>
 
@@ -335,10 +333,10 @@ function App() {
                         </div>
                       </div>
                       <div className="mt-4 text-gray-700 font-semibold">
-                        {t('about.stats.projects')}
+                        {t("about.stats.projects")}
                       </div>
                       <p className="text-gray-500 text-sm mt-1">
-                        {t('about.stats.sub')}
+                        {t("about.stats.sub")}
                       </p>
                     </div>
                   </div>
@@ -360,14 +358,12 @@ function App() {
             className="max-w-4xl mx-auto text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              {t('contact.title.1')}
+              {t("contact.title.1")}
               <span className="block mt-2 text-gray-500 tracking-wide">
-                {t('contact.title.2')}
+                {t("contact.title.2")}
               </span>
             </h2>
-            <p className="text-xl text-gray-600">
-              {t('contact.subtitle')}
-            </p>
+            <p className="text-xl text-gray-600">{t("contact.subtitle")}</p>
           </motion.div>
 
           <motion.div
@@ -382,7 +378,7 @@ function App() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <motion.div whileFocus={{ scale: 1.02 }}>
                     <label className="block text-sm font-medium mb-2">
-                      {t('contact.form.name')}
+                      {t("contact.form.name")}
                     </label>
                     <input
                       type="text"
@@ -392,7 +388,7 @@ function App() {
                   </motion.div>
                   <motion.div whileFocus={{ scale: 1.02 }}>
                     <label className="block text-sm font-medium mb-2">
-                      {t('contact.form.email')}
+                      {t("contact.form.email")}
                     </label>
                     <input
                       type="email"
@@ -403,7 +399,7 @@ function App() {
                 </div>
                 <motion.div whileFocus={{ scale: 1.02 }}>
                   <label className="block text-sm font-medium mb-2">
-                    {t('contact.form.company')}
+                    {t("contact.form.company")}
                   </label>
                   <input
                     type="text"
@@ -413,7 +409,7 @@ function App() {
                 </motion.div>
                 <motion.div whileFocus={{ scale: 1.02 }}>
                   <label className="block text-sm font-medium mb-2">
-                    {t('contact.form.details')}
+                    {t("contact.form.details")}
                   </label>
                   <textarea
                     placeholder="Tell us about your project..."
@@ -429,7 +425,7 @@ function App() {
                     type="submit"
                     className="w-full text-lg py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg"
                   >
-                    {t('contact.form.submit')}
+                    {t("contact.form.submit")}
                   </button>
                 </motion.div>
               </form>

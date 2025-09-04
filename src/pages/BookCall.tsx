@@ -17,7 +17,11 @@ function generateTimeSlots(date: Date | undefined) {
   const end = new Date(date);
   end.setHours(18, 0, 0, 0);
   const stepMinutes = 30;
-  for (let t = new Date(start); t <= end; t = new Date(t.getTime() + stepMinutes * 60000)) {
+  for (
+    let t = new Date(start);
+    t <= end;
+    t = new Date(t.getTime() + stepMinutes * 60000)
+  ) {
     slots.push(new Date(t));
   }
   return slots;
@@ -32,11 +36,15 @@ export default function BookCall() {
   const [selectedTime, setSelectedTime] = useState<Date | undefined>(undefined);
   const [submitted, setSubmitted] = useState(false);
 
-  const timeSlots = useMemo(() => generateTimeSlots(selectedDay), [selectedDay]);
+  const timeSlots = useMemo(
+    () => generateTimeSlots(selectedDay),
+    [selectedDay],
+  );
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!firstName || !lastName || !email || !selectedDay || !selectedTime) return;
+    if (!firstName || !lastName || !email || !selectedDay || !selectedTime)
+      return;
     setSubmitted(true);
   };
 
@@ -52,9 +60,11 @@ export default function BookCall() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">{t('book.title')}</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+              {t("book.title")}
+            </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              {t('book.lead')}
+              {t("book.lead")}
             </p>
           </motion.div>
 
@@ -70,7 +80,9 @@ export default function BookCall() {
               >
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium mb-2">{t('book.firstName')}</label>
+                    <label className="block text-sm font-medium mb-2">
+                      {t("book.firstName")}
+                    </label>
                     <input
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
@@ -80,7 +92,9 @@ export default function BookCall() {
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">{t('book.lastName')}</label>
+                    <label className="block text-sm font-medium mb-2">
+                      {t("book.lastName")}
+                    </label>
                     <input
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
@@ -91,7 +105,9 @@ export default function BookCall() {
                   </div>
                 </div>
                 <div className="mt-6">
-                  <label className="block text-sm font-medium mb-2">{t('book.email')}</label>
+                  <label className="block text-sm font-medium mb-2">
+                    {t("book.email")}
+                  </label>
                   <input
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -105,9 +121,15 @@ export default function BookCall() {
                   <button
                     type="submit"
                     className="w-full text-lg py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={!firstName || !lastName || !email || !selectedDay || !selectedTime}
+                    disabled={
+                      !firstName ||
+                      !lastName ||
+                      !email ||
+                      !selectedDay ||
+                      !selectedTime
+                    }
                   >
-                    {t('book.confirm')}
+                    {t("book.confirm")}
                   </button>
                 </div>
               </motion.form>
@@ -119,7 +141,9 @@ export default function BookCall() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="p-8 bg-white rounded-2xl border border-gray-200"
               >
-                <h3 className="text-xl font-semibold mb-4">{t('book.pickDay')}</h3>
+                <h3 className="text-xl font-semibold mb-4">
+                  {t("book.pickDay")}
+                </h3>
                 <DayPicker
                   mode="single"
                   selected={selectedDay}
@@ -131,20 +155,29 @@ export default function BookCall() {
                   className="mb-6"
                 />
 
-                <h3 className="text-xl font-semibold mb-3">{t('book.pickTime')}</h3>
+                <h3 className="text-xl font-semibold mb-3">
+                  {t("book.pickTime")}
+                </h3>
                 <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-64 overflow-y-auto pr-1">
                   {timeSlots.length === 0 && (
-                    <div className="col-span-full text-gray-500">{t('book.pickDay')}</div>
+                    <div className="col-span-full text-gray-500">
+                      {t("book.pickDay")}
+                    </div>
                   )}
                   {timeSlots.map((t) => {
-                    const isSelected = selectedTime && t.getHours() === selectedTime.getHours() && t.getMinutes() === selectedTime.getMinutes();
+                    const isSelected =
+                      selectedTime &&
+                      t.getHours() === selectedTime.getHours() &&
+                      t.getMinutes() === selectedTime.getMinutes();
                     return (
                       <button
                         key={t.toISOString()}
                         type="button"
                         onClick={() => setSelectedTime(t)}
                         className={`px-3 py-2 rounded-lg border text-sm transition-colors ${
-                          isSelected ? "bg-gray-900 text-white border-gray-900" : "bg-gray-50 hover:bg-gray-100 border-gray-200"
+                          isSelected
+                            ? "bg-gray-900 text-white border-gray-900"
+                            : "bg-gray-50 hover:bg-gray-100 border-gray-200"
                         }`}
                       >
                         {formatTime(t)}
@@ -162,12 +195,15 @@ export default function BookCall() {
               className="max-w-2xl mx-auto text-center p-10 bg-gray-50 rounded-2xl border border-gray-200"
             >
               <div className="text-6xl mb-4">✅</div>
-              <h3 className="text-2xl font-semibold mb-3">{t('book.success.title')}</h3>
+              <h3 className="text-2xl font-semibold mb-3">
+                {t("book.success.title")}
+              </h3>
               <p className="text-gray-700 mb-6">
-                {t('book.success.body', { firstName, email })}
+                {t("book.success.body", { firstName, email })}
               </p>
               <div className="text-sm text-gray-600">
-                {selectedDay?.toLocaleDateString()} • {selectedTime ? formatTime(selectedTime) : ""}
+                {selectedDay?.toLocaleDateString()} •{" "}
+                {selectedTime ? formatTime(selectedTime) : ""}
               </div>
             </motion.div>
           )}
