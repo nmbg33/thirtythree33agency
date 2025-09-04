@@ -84,7 +84,7 @@ export default function BookCall() {
       <Navbar />
 
       <section className="pt-40 pb-24">
-        <div className="container mx-auto px-6 max-w-5xl">
+        <div className="mx-auto w-full max-w-5xl px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -193,7 +193,7 @@ export default function BookCall() {
                 <h3 className="text-xl font-semibold mb-3 text-center sm:text-left">
                   {t("book.pickTime")}
                 </h3>
-                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-64 overflow-y-auto px-1 justify-items-center mx-auto">
+                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-64 overflow-y-auto px-1 justify-items-center mx-auto max-w-[320px]">
                   {timeSlots.length === 0 && (
                     <div className="col-span-full text-gray-500">
                       {t("book.pickDay")}
