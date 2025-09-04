@@ -100,7 +100,7 @@ export default function BookCall() {
           </motion.div>
 
           {!submitted ? (
-            <div className="grid lg:grid-cols-2 gap-10">
+            <div className="grid lg:grid-cols-2 gap-10 place-items-center">
               <motion.form
                 onSubmit={handleSubmit}
                 initial={{ opacity: 0, y: 40 }}
