@@ -117,9 +117,11 @@ export default function HomePage() {
               ))}
             </div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button variant="outline" className="hidden md:block">
-                Book a Call
-              </Button>
+              <a href="/book">
+                <Button asChild={false} variant="outline" className="hidden md:block">
+                  Book a Call
+                </Button>
+              </a>
             </motion.div>
           </div>
         </div>
