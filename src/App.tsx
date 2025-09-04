@@ -141,7 +141,7 @@ function App() {
                 whileTap={{ scale: 0.95 }}
               >
                 <a
-                  href="/#/book"
+                  href="#/book"
                   className="text-lg px-8 py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg"
                 >
                   {t("hero.cta.primary")}
