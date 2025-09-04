@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navbar from "./components/Navbar";
+import { useI18n } from "./i18n/I18nProvider";
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
+  const { t } = useI18n();
 
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, -100]);
@@ -109,16 +111,16 @@ function App() {
           >
             <motion.div variants={itemVariants}>
               <span className="inline-block mb-8 text-sm px-4 py-2 bg-gray-100 rounded-full">
-                Belgrade-based brand agency
+                {t('hero.badge')}
               </span>
             </motion.div>
 
             <motion.div variants={itemVariants} className="mb-8">
               <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tight">
-                We build brands
+                {t('hero.title.1')}
               </h1>
               <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tight text-gray-500">
-                that grow
+                {t('hero.title.2')}
               </h1>
             </motion.div>
 
@@ -126,8 +128,7 @@ function App() {
               variants={itemVariants}
               className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed"
             >
-              Strategic brand building, cutting-edge web development, and
-              growth-driven ideas that transform businesses into market leaders.
+              {t('hero.subtitle')}
             </motion.p>
 
             <motion.div
@@ -139,7 +140,7 @@ function App() {
                 whileTap={{ scale: 0.95 }}
               >
                 <button className="text-lg px-8 py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg">
-                  Start Your Project
+                  {t('hero.cta.primary')}
                 </button>
               </motion.div>
             </motion.div>
@@ -157,9 +158,9 @@ function App() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center mb-20"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">What we do</h2>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">{t('services.title')}</h2>
             <p className="text-xl text-gray-600">
-              Three core services that drive exceptional results
+              {t('services.subtitle')}
             </p>
           </motion.div>
 
@@ -167,23 +168,20 @@ function App() {
             {[
               {
                 icon: "⚡",
-                title: "Brand Building",
-                description:
-                  "Comprehensive brand strategy, visual identity, and positioning that resonates with your target audience and sets you apart from competition.",
+                title: t('services.0.title'),
+                description: t('services.0.desc'),
                 color: "from-amber-100 to-orange-200",
               },
               {
                 icon: "💻",
-                title: "Web Development",
-                description:
-                  "Custom websites and digital experiences that combine stunning design with powerful functionality to drive conversions and engagement.",
+                title: t('services.1.title'),
+                description: t('services.1.desc'),
                 color: "from-blue-100 to-purple-200",
               },
               {
                 icon: "📈",
-                title: "Growth Strategy",
-                description:
-                  "Data-driven growth strategies and innovative ideas that scale your business and maximize ROI across all marketing channels.",
+                title: t('services.2.title'),
+                description: t('services.2.desc'),
                 color: "from-green-100 to-emerald-200",
               },
             ].map((service, index) => (
@@ -225,11 +223,10 @@ function App() {
             className="max-w-4xl mx-auto text-center mb-20"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Our Strategy
+              {t('strategy.title')}
             </h2>
             <p className="text-xl text-gray-600">
-              We follow the latest trends and design styles while balancing
-              usability, accessibility, performance, and bold storytelling.
+              {t('strategy.subtitle')}
             </p>
           </motion.div>
 
@@ -237,31 +234,27 @@ function App() {
             {[
               {
                 icon: "🔎",
-                title: "Discover",
-                badge: "Research-first",
-                description:
-                  "Deep research, audits, and market insight to inform every decision.",
+                title: t('strategy.0.title'),
+                badge: t('strategy.0.badge'),
+                description: t('strategy.0.desc'),
               },
               {
                 icon: "✏️",
-                title: "Design",
-                badge: "Trends 2025",
-                description:
-                  "Modern aesthetics, advanced typography, and motion to create desire.",
+                title: t('strategy.1.title'),
+                badge: t('strategy.1.badge'),
+                description: t('strategy.1.desc'),
               },
               {
                 icon: "⚙️",
-                title: "Develop",
-                badge: "Performance",
-                description:
-                  "Lightning-fast builds with accessibility and SEO baked in from day one.",
+                title: t('strategy.2.title'),
+                badge: t('strategy.2.badge'),
+                description: t('strategy.2.desc'),
               },
               {
                 icon: "🚀",
-                title: "Grow",
-                badge: "Iterate",
-                description:
-                  "Continuous optimization, content, and campaigns that compound results.",
+                title: t('strategy.3.title'),
+                badge: t('strategy.3.badge'),
+                description: t('strategy.3.desc'),
               },
             ].map((item, i) => (
               <motion.div
@@ -301,18 +294,14 @@ function App() {
                 viewport={{ once: true }}
               >
                 <h2 className="text-4xl md:text-5xl font-bold mb-8">
-                  Belgrade's creative
-                  <span className="text-gray-500"> powerhouse</span>
+                  {t('about.title.main')}
+                  <span className="text-gray-500"> {t('about.title.em')}</span>
                 </h2>
                 <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  Founded in Belgrade, thirtythree represents the new wave of
-                  Serbian creativity. We combine local insight with global
-                  standards to create brands that compete on the world stage.
+                  {t('about.p1')}
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Our team of strategists, designers, and developers work
-                  collaboratively to ensure every project exceeds expectations
-                  and drives real business results.
+                  {t('about.p2')}
                 </p>
               </motion.div>
 
@@ -346,10 +335,10 @@ function App() {
                         </div>
                       </div>
                       <div className="mt-4 text-gray-700 font-semibold">
-                        Projects delivered
+                        {t('about.stats.projects')}
                       </div>
                       <p className="text-gray-500 text-sm mt-1">
-                        From startups to enterprises across 12 industries
+                        {t('about.stats.sub')}
                       </p>
                     </div>
                   </div>
@@ -371,14 +360,13 @@ function App() {
             className="max-w-4xl mx-auto text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              Let's create something
+              {t('contact.title.1')}
               <span className="block mt-2 text-gray-500 tracking-wide">
-                amazing
+                {t('contact.title.2')}
               </span>
             </h2>
             <p className="text-xl text-gray-600">
-              Ready to transform your brand? Schedule a consultation and let's
-              discuss your project.
+              {t('contact.subtitle')}
             </p>
           </motion.div>
 
@@ -394,7 +382,7 @@ function App() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <motion.div whileFocus={{ scale: 1.02 }}>
                     <label className="block text-sm font-medium mb-2">
-                      Name
+                      {t('contact.form.name')}
                     </label>
                     <input
                       type="text"
@@ -404,7 +392,7 @@ function App() {
                   </motion.div>
                   <motion.div whileFocus={{ scale: 1.02 }}>
                     <label className="block text-sm font-medium mb-2">
-                      Email
+                      {t('contact.form.email')}
                     </label>
                     <input
                       type="email"
@@ -415,7 +403,7 @@ function App() {
                 </div>
                 <motion.div whileFocus={{ scale: 1.02 }}>
                   <label className="block text-sm font-medium mb-2">
-                    Company
+                    {t('contact.form.company')}
                   </label>
                   <input
                     type="text"
@@ -425,7 +413,7 @@ function App() {
                 </motion.div>
                 <motion.div whileFocus={{ scale: 1.02 }}>
                   <label className="block text-sm font-medium mb-2">
-                    Project Details
+                    {t('contact.form.details')}
                   </label>
                   <textarea
                     placeholder="Tell us about your project..."
@@ -441,7 +429,7 @@ function App() {
                     type="submit"
                     className="w-full text-lg py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg"
                   >
-                    Schedule a Meeting
+                    {t('contact.form.submit')}
                   </button>
                 </motion.div>
               </form>
