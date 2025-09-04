@@ -43,11 +43,40 @@ export default function BookCall() {
     [selectedDay],
   );
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
     if (!firstName || !lastName || !email || !selectedDay || !selectedTime)
       return;
-    setSubmitted(true);
+    try {
+      setLoading(true);
+      const scheduled = new Date(selectedDay);
+      scheduled.setHours(
+        selectedTime.getHours(),
+        selectedTime.getMinutes(),
+        0,
+        0,
+      );
+      const res = await fetch("/api/book", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          scheduledAt: scheduled.toISOString(),
+        }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error || `Failed with status ${res.status}`);
+      }
+      setSubmitted(true);
+    } catch (err: any) {
+      setError(err?.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
