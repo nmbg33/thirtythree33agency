@@ -101,14 +101,14 @@ export default function BookCall() {
           </motion.div>
 
           {!submitted ? (
-            <div className="grid lg:grid-cols-2 gap-10 place-items-center w-full max-w-[360px] mx-auto">
+            <div className="grid lg:grid-cols-2 gap-10 place-items-center">
               <motion.form
                 onSubmit={handleSubmit}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.1 }}
-                className="w-full max-w-[360px] sm:max-w-md mx-auto p-8 bg-gray-50 rounded-2xl border border-gray-200 text-center sm:text-left"
+                className="w-full max-w-[360px] sm:max-w-md md:max-w-lg lg:max-w-none mx-auto lg:mx-0 p-8 bg-gray-50 rounded-2xl border border-gray-200 text-center sm:text-left"
               >
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -175,7 +175,7 @@ export default function BookCall() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="w-full max-w-[360px] sm:max-w-md mx-auto p-8 bg-white rounded-2xl border border-gray-200 text-center sm:text-left"
+                className="w-full max-w-[360px] sm:max-w-md md:max-w-lg lg:max-w-none mx-auto lg:mx-0 p-8 bg-white rounded-2xl border border-gray-200 text-center sm:text-left"
               >
                 <h3 className="text-xl font-semibold mb-4 text-center sm:text-left">
                   {t("book.pickDay")}
@@ -188,13 +188,13 @@ export default function BookCall() {
                   modifiersClassNames={{
                     selected: "bg-yellow-400 text-black",
                   }}
-                  className="mb-6 mx-auto max-w-[300px]"
+                  className="mb-6 mx-auto md:mx-0 max-w-[300px] md:max-w-none"
                 />
 
                 <h3 className="text-xl font-semibold mb-3 text-center sm:text-left">
                   {t("book.pickTime")}
                 </h3>
-                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-64 overflow-y-auto px-0 justify-items-center mx-auto w-full max-w-[300px]">
+                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-64 overflow-y-auto px-0 justify-items-center mx-auto md:mx-0 w-full max-w-[300px] md:max-w-none">
                   {timeSlots.length === 0 && (
                     <div className="col-span-full text-gray-500">
                       {t("book.pickDay")}
