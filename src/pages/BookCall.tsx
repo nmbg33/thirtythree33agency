@@ -107,7 +107,7 @@ export default function BookCall() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.1 }}
-                className="p-8 bg-gray-50 rounded-2xl border border-gray-200"
+                className="w-full max-w-md mx-auto p-8 bg-gray-50 rounded-2xl border border-gray-200 text-center sm:text-left"
               >
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
