@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useI18n } from '../i18n/I18nProvider';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t, lang, setLang } = useI18n();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -12,10 +14,10 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    { label: 'Services', href: '/#services' },
-    { label: 'Strategy', href: '/#strategy' },
-    { label: 'About', href: '/#about' },
-    { label: 'Contact', href: '/#contact' },
+    { label: t('nav.services'), href: '/#services' },
+    { label: t('nav.strategy'), href: '/#strategy' },
+    { label: t('nav.about'), href: '/#about' },
+    { label: t('nav.contact'), href: '/#contact' },
   ];
 
   return (
@@ -49,14 +51,30 @@ export default function Navbar() {
               </motion.a>
             ))}
           </div>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link
-              to="/book"
-              className="hidden md:block px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-            >
-              Book a Call
-            </Link>
-          </motion.div>
+          <div className="flex items-center gap-3">
+            <div className="hidden md:flex items-center rounded-lg border border-gray-300 overflow-hidden">
+              <button
+                onClick={() => setLang('en')}
+                className={`px-3 py-2 text-sm ${lang === 'en' ? 'bg-gray-900 text-white' : 'bg-white text-gray-700'}`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLang('sr')}
+                className={`px-3 py-2 text-sm border-l border-gray-300 ${lang === 'sr' ? 'bg-gray-900 text-white' : 'bg-white text-gray-700'}`}
+              >
+                SR
+              </button>
+            </div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                to="/book"
+                className="hidden md:block px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+              >
+                {t('nav.book')}
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </div>
     </motion.nav>
