@@ -20,6 +20,14 @@
       "@/app/*": ["./app/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "client/**/*.ts", "client/**/*.tsx", "components/**/*.ts", "components/**/*.tsx", "api/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "client/**/*.ts",
+    "client/**/*.tsx",
+    "components/**/*.ts",
+    "components/**/*.tsx",
+    "api/**/*.ts"
+  ],
   "exclude": ["node_modules", "app/**", "next-env.d.ts", ".next/**"]
 }
