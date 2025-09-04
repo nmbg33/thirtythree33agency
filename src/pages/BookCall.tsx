@@ -148,19 +148,16 @@ export default function BookCall() {
                   />
                 </div>
 
+                {error && (
+                  <div className="mt-4 text-sm text-red-600">{error}</div>
+                )}
                 <div className="mt-8">
                   <button
                     type="submit"
                     className="w-full text-lg py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={
-                      !firstName ||
-                      !lastName ||
-                      !email ||
-                      !selectedDay ||
-                      !selectedTime
-                    }
+                    disabled={loading || !firstName || !lastName || !email || !selectedDay || !selectedTime}
                   >
-                    {t("book.confirm")}
+                    {loading ? 'Booking…' : t("book.confirm")}
                   </button>
                 </div>
               </motion.form>
