@@ -167,9 +167,9 @@ export default function BookCall() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="p-8 bg-white rounded-2xl border border-gray-200"
+                className="w-full max-w-md mx-auto p-8 bg-white rounded-2xl border border-gray-200 text-center sm:text-left"
               >
-                <h3 className="text-xl font-semibold mb-4">
+                <h3 className="text-xl font-semibold mb-4 text-center sm:text-left">
                   {t("book.pickDay")}
                 </h3>
                 <DayPicker
