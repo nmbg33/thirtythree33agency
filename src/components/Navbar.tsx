@@ -74,14 +74,14 @@ export default function Navbar() {
             </div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <a
-                href="/#/book"
+                href="#/book"
                 className="hidden md:block px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
               >
                 {t("nav.book")}
               </a>
             </motion.div>
             <a
-              href="/#/book"
+              href="#/book"
               className="md:hidden px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm"
             >
               {t("nav.book")}
