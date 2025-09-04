@@ -180,13 +180,13 @@ export default function BookCall() {
                   modifiersClassNames={{
                     selected: "bg-yellow-400 text-black",
                   }}
-                  className="mb-6"
+                  className="mb-6 mx-auto"
                 />
 
-                <h3 className="text-xl font-semibold mb-3">
+                <h3 className="text-xl font-semibold mb-3 text-center sm:text-left">
                   {t("book.pickTime")}
                 </h3>
-                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-64 overflow-y-auto pr-1">
+                <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 max-h-64 overflow-y-auto pr-1 justify-items-center">
                   {timeSlots.length === 0 && (
                     <div className="col-span-full text-gray-500">
                       {t("book.pickDay")}
