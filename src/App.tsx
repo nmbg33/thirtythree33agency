@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
-  
+
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, -100]);
   const y2 = useTransform(scrollY, [0, 1000], [0, -200]);
@@ -13,21 +13,21 @@ function App() {
 
   useEffect(() => {
     setIsLoaded(true);
-    
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('mousemove', handleMouseMove);
-    
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", handleMouseMove);
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
@@ -37,9 +37,9 @@ function App() {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
+        delayChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -49,14 +49,14 @@ function App() {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: [0.6, -0.05, 0.01, 0.99]
-      }
-    }
+        ease: [0.6, -0.05, 0.01, 0.99],
+      },
+    },
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted');
+    console.log("Form submitted");
   };
 
   return (
@@ -69,9 +69,9 @@ function App() {
           y: mousePosition.y - 8,
         }}
         transition={{
-          type: 'spring',
+          type: "spring",
           stiffness: 500,
-          damping: 28
+          damping: 28,
         }}
       />
 
@@ -81,7 +81,9 @@ function App() {
         animate={{ y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-          isScrolled ? 'bg-white/95 backdrop-blur-md border-b border-gray-200' : 'bg-transparent'
+          isScrolled
+            ? "bg-white/95 backdrop-blur-md border-b border-gray-200"
+            : "bg-transparent"
         }`}
       >
         <div className="container mx-auto px-6 py-6">
@@ -93,7 +95,7 @@ function App() {
               thirtythree
             </motion.div>
             <div className="hidden md:flex items-center space-x-8">
-              {['Services', 'Strategy', 'About', 'Contact'].map((item) => (
+              {["Services", "Strategy", "About", "Contact"].map((item) => (
                 <motion.a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -103,7 +105,7 @@ function App() {
                   {item}
                   <motion.div
                     className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-400"
-                    whileHover={{ width: '100%' }}
+                    whileHover={{ width: "100%" }}
                     transition={{ duration: 0.3 }}
                   />
                 </motion.a>
@@ -133,10 +135,10 @@ function App() {
           <motion.div
             className="absolute top-1/2 left-1/4 w-32 h-32 bg-gray-200/20 rotate-45 blur-xl"
             animate={{ rotate: [0, 360] }}
-            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           />
         </div>
-        
+
         <motion.div
           style={{ opacity }}
           className="container mx-auto px-6 relative z-10"
@@ -152,7 +154,7 @@ function App() {
                 Belgrade-based brand agency
               </span>
             </motion.div>
-            
+
             <motion.div variants={itemVariants} className="mb-8">
               <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold tracking-tight">
                 We build brands
@@ -161,20 +163,23 @@ function App() {
                 that grow
               </h1>
             </motion.div>
-            
+
             <motion.p
               variants={itemVariants}
               className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed"
             >
-              Strategic brand building, cutting-edge web development, and growth-driven ideas 
-              that transform businesses into market leaders.
+              Strategic brand building, cutting-edge web development, and
+              growth-driven ideas that transform businesses into market leaders.
             </motion.p>
-            
+
             <motion.div
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-6 justify-center"
             >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <button className="text-lg px-8 py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg">
                   Start Your Project
                 </button>
@@ -194,34 +199,35 @@ function App() {
             viewport={{ once: true }}
             className="max-w-4xl mx-auto text-center mb-20"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
-              What we do
-            </h2>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">What we do</h2>
             <p className="text-xl text-gray-600">
               Three core services that drive exceptional results
             </p>
           </motion.div>
-          
+
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
-                icon: '⚡',
-                title: 'Brand Building',
-                description: 'Comprehensive brand strategy, visual identity, and positioning that resonates with your target audience and sets you apart from competition.',
-                color: 'from-amber-100 to-orange-200'
+                icon: "⚡",
+                title: "Brand Building",
+                description:
+                  "Comprehensive brand strategy, visual identity, and positioning that resonates with your target audience and sets you apart from competition.",
+                color: "from-amber-100 to-orange-200",
               },
               {
-                icon: '💻',
-                title: 'Web Development',
-                description: 'Custom websites and digital experiences that combine stunning design with powerful functionality to drive conversions and engagement.',
-                color: 'from-blue-100 to-purple-200'
+                icon: "💻",
+                title: "Web Development",
+                description:
+                  "Custom websites and digital experiences that combine stunning design with powerful functionality to drive conversions and engagement.",
+                color: "from-blue-100 to-purple-200",
               },
               {
-                icon: '📈',
-                title: 'Growth Strategy',
-                description: 'Data-driven growth strategies and innovative ideas that scale your business and maximize ROI across all marketing channels.',
-                color: 'from-green-100 to-emerald-200'
-              }
+                icon: "📈",
+                title: "Growth Strategy",
+                description:
+                  "Data-driven growth strategies and innovative ideas that scale your business and maximize ROI across all marketing channels.",
+                color: "from-green-100 to-emerald-200",
+              },
             ].map((service, index) => (
               <motion.div
                 key={service.title}
@@ -264,35 +270,40 @@ function App() {
               Our Strategy
             </h2>
             <p className="text-xl text-gray-600">
-              We follow the latest trends and design styles while balancing usability, accessibility, performance, and bold storytelling.
+              We follow the latest trends and design styles while balancing
+              usability, accessibility, performance, and bold storytelling.
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {[
               {
-                icon: '🔎',
-                title: 'Discover',
-                badge: 'Research-first',
-                description: 'Deep research, audits, and market insight to inform every decision.'
+                icon: "🔎",
+                title: "Discover",
+                badge: "Research-first",
+                description:
+                  "Deep research, audits, and market insight to inform every decision.",
               },
               {
-                icon: '✏️',
-                title: 'Design',
-                badge: 'Trends 2025',
-                description: 'Modern aesthetics, advanced typography, and motion to create desire.'
+                icon: "✏️",
+                title: "Design",
+                badge: "Trends 2025",
+                description:
+                  "Modern aesthetics, advanced typography, and motion to create desire.",
               },
               {
-                icon: '⚙️',
-                title: 'Develop',
-                badge: 'Performance',
-                description: 'Lightning-fast builds with accessibility and SEO baked in from day one.'
+                icon: "⚙️",
+                title: "Develop",
+                badge: "Performance",
+                description:
+                  "Lightning-fast builds with accessibility and SEO baked in from day one.",
               },
               {
-                icon: '🚀',
-                title: 'Grow',
-                badge: 'Iterate',
-                description: 'Continuous optimization, content, and campaigns that compound results.'
+                icon: "🚀",
+                title: "Grow",
+                badge: "Iterate",
+                description:
+                  "Continuous optimization, content, and campaigns that compound results.",
               },
             ].map((item, i) => (
               <motion.div
@@ -306,10 +317,14 @@ function App() {
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-2xl">{item.icon}</div>
-                  <span className="text-xs px-2.5 py-1 rounded-full bg-yellow-100 text-yellow-700 border border-yellow-200">{item.badge}</span>
+                  <span className="text-xs px-2.5 py-1 rounded-full bg-yellow-100 text-yellow-700 border border-yellow-200">
+                    {item.badge}
+                  </span>
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                <p className="text-gray-600 leading-relaxed">
+                  {item.description}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -328,20 +343,21 @@ function App() {
                 viewport={{ once: true }}
               >
                 <h2 className="text-4xl md:text-5xl font-bold mb-8">
-                  Belgrade's creative 
+                  Belgrade's creative
                   <span className="text-gray-500"> powerhouse</span>
                 </h2>
                 <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                  Founded in Belgrade, thirtythree represents the new wave of Serbian creativity. 
-                  We combine local insight with global standards to create brands that compete 
-                  on the world stage.
+                  Founded in Belgrade, thirtythree represents the new wave of
+                  Serbian creativity. We combine local insight with global
+                  standards to create brands that compete on the world stage.
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  Our team of strategists, designers, and developers work collaboratively 
-                  to ensure every project exceeds expectations and drives real business results.
+                  Our team of strategists, designers, and developers work
+                  collaboratively to ensure every project exceeds expectations
+                  and drives real business results.
                 </p>
               </motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, x: 60 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -366,11 +382,17 @@ function App() {
                           className="absolute inset-0 rounded-full ring-2 ring-yellow-400/60 animate-pulse"
                         />
                         <div className="relative flex items-center justify-center h-full">
-                          <span className="text-5xl font-bold bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent">50+</span>
+                          <span className="text-5xl font-bold bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent">
+                            50+
+                          </span>
                         </div>
                       </div>
-                      <div className="mt-4 text-gray-700 font-semibold">Projects delivered</div>
-                      <p className="text-gray-500 text-sm mt-1">From startups to enterprises across 12 industries</p>
+                      <div className="mt-4 text-gray-700 font-semibold">
+                        Projects delivered
+                      </div>
+                      <p className="text-gray-500 text-sm mt-1">
+                        From startups to enterprises across 12 industries
+                      </p>
                     </div>
                   </div>
                 </motion.div>
@@ -392,10 +414,13 @@ function App() {
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-6">
               Let's create something
-              <span className="block mt-2 text-gray-500 tracking-wide">amazing</span>
+              <span className="block mt-2 text-gray-500 tracking-wide">
+                amazing
+              </span>
             </h2>
             <p className="text-xl text-gray-600">
-              Ready to transform your brand? Schedule a consultation and let's discuss your project.
+              Ready to transform your brand? Schedule a consultation and let's
+              discuss your project.
             </p>
           </motion.div>
 
@@ -410,41 +435,52 @@ function App() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <motion.div whileFocus={{ scale: 1.02 }}>
-                    <label className="block text-sm font-medium mb-2">Name</label>
-                    <input 
-                      type="text" 
-                      placeholder="Your name" 
-                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all" 
+                    <label className="block text-sm font-medium mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Your name"
+                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
                     />
                   </motion.div>
                   <motion.div whileFocus={{ scale: 1.02 }}>
-                    <label className="block text-sm font-medium mb-2">Email</label>
-                    <input 
-                      type="email" 
-                      placeholder="your@email.com" 
-                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all" 
+                    <label className="block text-sm font-medium mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="your@email.com"
+                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
                     />
                   </motion.div>
                 </div>
                 <motion.div whileFocus={{ scale: 1.02 }}>
-                  <label className="block text-sm font-medium mb-2">Company</label>
-                  <input 
-                    type="text" 
-                    placeholder="Your company" 
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all" 
+                  <label className="block text-sm font-medium mb-2">
+                    Company
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Your company"
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
                   />
                 </motion.div>
                 <motion.div whileFocus={{ scale: 1.02 }}>
-                  <label className="block text-sm font-medium mb-2">Project Details</label>
-                  <textarea 
-                    placeholder="Tell us about your project..." 
+                  <label className="block text-sm font-medium mb-2">
+                    Project Details
+                  </label>
+                  <textarea
+                    placeholder="Tell us about your project..."
                     rows={4}
                     className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all resize-none"
                   />
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <button 
-                    type="submit" 
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <button
+                    type="submit"
                     className="w-full text-lg py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg"
                   >
                     Schedule a Meeting
@@ -466,7 +502,10 @@ function App() {
             viewport={{ once: true }}
             className="flex flex-col md:flex-row justify-between items-center"
           >
-            <motion.div whileHover={{ scale: 1.05 }} className="text-2xl font-bold mb-4 md:mb-0">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="text-2xl font-bold mb-4 md:mb-0"
+            >
               thirtythree
             </motion.div>
             <div className="flex items-center space-x-8">
