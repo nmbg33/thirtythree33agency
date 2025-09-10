@@ -15,8 +15,8 @@ export default function Develop() {
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-4">Develop</h1>
             <p className="text-lg text-gray-600">
-              Performance-first engineering. Modern stacks, clean architecture, and automation
-              that ships fast without breaking.
+              Performance-first engineering. Modern stacks, clean architecture,
+              and automation that ships fast without breaking.
             </p>
           </motion.div>
 

@@ -15,8 +15,9 @@ export default function Discover() {
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-4">Discover</h1>
             <p className="text-lg text-gray-600">
-              We begin with research. Audits, interviews, data, and market signals reveal
-              what matters: opportunities, pain points, and the story only your brand can tell.
+              We begin with research. Audits, interviews, data, and market
+              signals reveal what matters: opportunities, pain points, and the
+              story only your brand can tell.
             </p>
           </motion.div>
 

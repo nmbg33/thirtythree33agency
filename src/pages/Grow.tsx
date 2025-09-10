@@ -15,8 +15,8 @@ export default function Grow() {
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-4">Grow</h1>
             <p className="text-lg text-gray-600">
-              Launch is the start. We iterate with content, experiments, and campaigns that
-              compound over time.
+              Launch is the start. We iterate with content, experiments, and
+              campaigns that compound over time.
             </p>
           </motion.div>
 

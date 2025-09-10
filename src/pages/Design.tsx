@@ -15,8 +15,9 @@ export default function Design() {
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-4">Design</h1>
             <p className="text-lg text-gray-600">
-              We craft systems: typography, color, motion, and components that scale. A visual
-              language that is both beautiful and brutally clear.
+              We craft systems: typography, color, motion, and components that
+              scale. A visual language that is both beautiful and brutally
+              clear.
             </p>
           </motion.div>
 
