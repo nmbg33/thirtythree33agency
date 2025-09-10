@@ -337,7 +337,7 @@ const dictSr: Dict = {
   // Grow
   "process.grow.title": "Rast",
   "process.grow.lead":
-    "Lansiranje je početak. Iteriramo kroz sadržaj, eksperimente i kampanje koje vremenom multipliciraju rezultate.",
+    "Lansiranje je po��etak. Iteriramo kroz sadržaj, eksperimente i kampanje koje vremenom multipliciraju rezultate.",
   "process.grow.what": "Šta radimo",
   "process.grow.outcomes": "Ishodi",
   "process.grow.what.1": "Sadržaj i SEO programi",
@@ -418,6 +418,20 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
 export function useI18n() {
   const ctx = useContext(I18nContext);
-  if (!ctx) throw new Error("useI18n must be used within I18nProvider");
+  if (!ctx) {
+    if (typeof console !== "undefined") {
+      console.warn("useI18n called outside I18nProvider. Falling back to default 'en'.");
+    }
+    const t = (key: string, params?: Record<string, string | number>) => {
+      let v = dictionaries.en[key] ?? key;
+      if (params) {
+        Object.entries(params).forEach(([k, val]) => {
+          v = v.replace(new RegExp(`{${k}}`, "g"), String(val));
+        });
+      }
+      return v;
+    };
+    return { lang: "en", setLang: () => {}, toggle: () => {}, t };
+  }
   return ctx;
 }
