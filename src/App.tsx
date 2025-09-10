@@ -175,42 +175,46 @@ function App() {
                 title: t("services.0.title"),
                 description: t("services.0.desc"),
                 color: "from-amber-100 to-orange-200",
+                to: "/services/brand",
               },
               {
                 icon: "💻",
                 title: t("services.1.title"),
                 description: t("services.1.desc"),
                 color: "from-blue-100 to-purple-200",
+                to: "/services/web",
               },
               {
                 icon: "📈",
                 title: t("services.2.title"),
                 description: t("services.2.desc"),
                 color: "from-green-100 to-emerald-200",
+                to: "/services/growth",
               },
             ].map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="group"
-              >
-                <div className="h-full p-8 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
-                  <motion.div
-                    whileHover={{ scale: 1.2, rotate: 10 }}
-                    className={`w-16 h-16 rounded-2xl mb-6 flex items-center justify-center text-2xl bg-gradient-to-r ${service.color} group-hover:shadow-lg transition-all duration-300`}
-                  >
-                    {service.icon}
-                  </motion.div>
-                  <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-              </motion.div>
+              <Link key={service.title} to={service.to}>
+                <motion.div
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="group"
+                >
+                  <div className="h-full p-8 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500">
+                    <motion.div
+                      whileHover={{ scale: 1.2, rotate: 10 }}
+                      className={`w-16 h-16 rounded-2xl mb-6 flex items-center justify-center text-2xl bg-gradient-to-r ${service.color} group-hover:shadow-lg transition-all duration-300`}
+                    >
+                      {service.icon}
+                    </motion.div>
+                    <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>
