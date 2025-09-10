@@ -14,10 +14,10 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    { label: t("nav.services"), href: "/#services" },
-    { label: t("nav.strategy"), href: "/#strategy" },
-    { label: t("nav.about"), href: "/#about" },
-    { label: t("nav.contact"), href: "/#contact" },
+    { label: t("nav.services"), href: "#services" },
+    { label: t("nav.strategy"), href: "#strategy" },
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.contact"), href: "#contact" },
   ];
 
   return (
@@ -33,13 +33,14 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 py-6">
         <div className="flex items-center justify-between">
-          <motion.a
-            href="/"
-            whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold tracking-tight cursor-pointer"
-          >
-            thirtythree
-          </motion.a>
+          <motion.div whileHover={{ scale: 1.05 }}>
+            <Link
+              to="/"
+              className="text-2xl font-bold tracking-tight cursor-pointer"
+            >
+              thirtythree
+            </Link>
+          </motion.div>
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <motion.a
