@@ -239,46 +239,51 @@ function App() {
                 title: t("strategy.0.title"),
                 badge: t("strategy.0.badge"),
                 description: t("strategy.0.desc"),
+                to: "/discover",
               },
               {
                 icon: "✏️",
                 title: t("strategy.1.title"),
                 badge: t("strategy.1.badge"),
                 description: t("strategy.1.desc"),
+                to: "/design",
               },
               {
                 icon: "⚙️",
                 title: t("strategy.2.title"),
                 badge: t("strategy.2.badge"),
                 description: t("strategy.2.desc"),
+                to: "/develop",
               },
               {
                 icon: "🚀",
                 title: t("strategy.3.title"),
                 badge: t("strategy.3.badge"),
                 description: t("strategy.3.desc"),
+                to: "/grow",
               },
             ].map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: i * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="p-6 rounded-2xl bg-gray-50 hover:bg-white border border-gray-200 hover:shadow-xl transition-all"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="text-2xl">{item.icon}</div>
-                  <span className="text-xs px-2.5 py-1 rounded-full bg-yellow-100 text-yellow-700 border border-yellow-200">
-                    {item.badge}
-                  </span>
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {item.description}
-                </p>
-              </motion.div>
+              <Link key={item.title} to={item.to}>
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="p-6 rounded-2xl bg-gray-50 hover:bg-white border border-gray-200 hover:shadow-xl transition-all"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="text-2xl">{item.icon}</div>
+                    <span className="text-xs px-2.5 py-1 rounded-full bg-yellow-100 text-yellow-700 border border-yellow-200">
+                      {item.badge}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>
