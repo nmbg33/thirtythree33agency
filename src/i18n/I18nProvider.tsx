@@ -163,7 +163,8 @@ const dictEn: Dict = {
   "services.nav.growth": "Growth Strategy",
 
   "services.brand.title": "Brand Building",
-  "services.brand.lead": "Positioning, identity, and messaging that make your brand unforgettable.",
+  "services.brand.lead":
+    "Positioning, identity, and messaging that make your brand unforgettable.",
   "services.brand.what": "What we do",
   "services.brand.outcomes": "Outcomes",
   "services.brand.what.1": "Brand strategy & positioning",
@@ -176,7 +177,8 @@ const dictEn: Dict = {
   "services.brand.out.4": "Scalable brand system",
 
   "services.web.title": "Web Development",
-  "services.web.lead": "High-performance websites and digital products that convert.",
+  "services.web.lead":
+    "High-performance websites and digital products that convert.",
   "services.web.what": "What we do",
   "services.web.outcomes": "Outcomes",
   "services.web.what.1": "React/TypeScript frontends",
@@ -189,7 +191,8 @@ const dictEn: Dict = {
   "services.web.out.4": "Actionable insights & tracking",
 
   "services.growth.title": "Growth Strategy",
-  "services.growth.lead": "Programs that compound results across content, SEO, and performance.",
+  "services.growth.lead":
+    "Programs that compound results across content, SEO, and performance.",
   "services.growth.what": "What we do",
   "services.growth.outcomes": "Outcomes",
   "services.growth.what.1": "Content strategy & production",
@@ -352,7 +355,8 @@ const dictSr: Dict = {
   "services.nav.growth": "Strategija rasta",
 
   "services.brand.title": "Izgradnja brenda",
-  "services.brand.lead": "Pozicioniranje, identitet i poruke zbog kojih se brend pamti.",
+  "services.brand.lead":
+    "Pozicioniranje, identitet i poruke zbog kojih se brend pamti.",
   "services.brand.what": "Šta radimo",
   "services.brand.outcomes": "Ishodi",
   "services.brand.what.1": "Strategija brenda i pozicioniranje",
@@ -365,7 +369,8 @@ const dictSr: Dict = {
   "services.brand.out.4": "Skalabilan brend sistem",
 
   "services.web.title": "Web razvoj",
-  "services.web.lead": "Brze, moderne web aplikacije i proizvodi koji konvertuju.",
+  "services.web.lead":
+    "Brze, moderne web aplikacije i proizvodi koji konvertuju.",
   "services.web.what": "Šta radimo",
   "services.web.outcomes": "Ishodi",
   "services.web.what.1": "React/TypeScript frontend",
@@ -378,7 +383,8 @@ const dictSr: Dict = {
   "services.web.out.4": "Akcioni uvidi i merenje",
 
   "services.growth.title": "Strategija rasta",
-  "services.growth.lead": "Programi koji vremenom multipliciraju rezultate kroz sadržaj, SEO i performanse.",
+  "services.growth.lead":
+    "Programi koji vremenom multipliciraju rezultate kroz sadržaj, SEO i performanse.",
   "services.growth.what": "Šta radimo",
   "services.growth.outcomes": "Ishodi",
   "services.growth.what.1": "Strategija sadržaja i produkcija",

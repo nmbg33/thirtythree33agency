@@ -18,7 +18,9 @@ export default function ProcessTabs({ t }: { t: (k: string) => string }) {
           <Link key={tab.to} to={tab.to} className="relative">
             <motion.span
               className={`px-4 py-2 rounded-lg text-sm transition-colors ${
-                active ? "bg-gray-900 text-white" : "text-gray-700 hover:bg-gray-100"
+                active
+                  ? "bg-gray-900 text-white"
+                  : "text-gray-700 hover:bg-gray-100"
               }`}
               whileHover={{ y: -1 }}
             >

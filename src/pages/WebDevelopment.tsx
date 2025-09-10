@@ -23,7 +23,9 @@ export default function WebDevelopment() {
             transition={{ duration: 0.6 }}
             className="mb-10"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">{t("services.web.title")}</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+              {t("services.web.title")}
+            </h1>
             <p className="text-lg text-gray-600">{t("services.web.lead")}</p>
           </motion.div>
 
@@ -35,7 +37,9 @@ export default function WebDevelopment() {
               transition={{ duration: 0.6 }}
               className="p-6 bg-gray-50 rounded-2xl border border-gray-200"
             >
-              <h3 className="text-xl font-semibold mb-3">{t("services.web.what")}</h3>
+              <h3 className="text-xl font-semibold mb-3">
+                {t("services.web.what")}
+              </h3>
               <ul className="space-y-2 text-gray-700">
                 <li>• {t("services.web.what.1")}</li>
                 <li>• {t("services.web.what.2")}</li>
@@ -51,7 +55,9 @@ export default function WebDevelopment() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="p-6 bg-white rounded-2xl border border-gray-200"
             >
-              <h3 className="text-xl font-semibold mb-3">{t("services.web.outcomes")}</h3>
+              <h3 className="text-xl font-semibold mb-3">
+                {t("services.web.outcomes")}
+              </h3>
               <ul className="space-y-2 text-gray-700">
                 <li>• {t("services.web.out.1")}</li>
                 <li>• {t("services.web.out.2")}</li>
