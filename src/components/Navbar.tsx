@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useI18n } from "../i18n/I18nProvider";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { t, lang, setLang } = useI18n();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -14,11 +16,24 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    { label: t("nav.services"), href: "#services" },
-    { label: t("nav.strategy"), href: "#strategy" },
-    { label: t("nav.about"), href: "#about" },
-    { label: t("nav.contact"), href: "#contact" },
+    { label: t("nav.services"), id: "services" },
+    { label: t("nav.strategy"), id: "strategy" },
+    { label: t("nav.about"), id: "about" },
+    { label: t("nav.contact"), id: "contact" },
   ];
+
+  const handleNavClick = (id: string) => {
+    const go = () => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(go, 50);
+    } else {
+      go();
+    }
+  };
 
   return (
     <motion.nav
@@ -43,19 +58,14 @@ export default function Navbar() {
           </motion.div>
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <motion.a
-                key={item.label}
-                href={item.href}
-                whileHover={{ y: -2 }}
+              <button
+                key={item.id}
+                onClick={() => handleNavClick(item.id)}
                 className="text-gray-600 hover:text-gray-900 transition-colors relative group"
               >
                 {item.label}
-                <motion.div
-                  className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-400"
-                  whileHover={{ width: "100%" }}
-                  transition={{ duration: 0.3 }}
-                />
-              </motion.a>
+                <span className="absolute -bottom-1 left-0 w-0 group-hover:w-full h-0.5 bg-yellow-400 transition-all duration-300" />
+              </button>
             ))}
           </div>
           <div className="flex items-center gap-3">
