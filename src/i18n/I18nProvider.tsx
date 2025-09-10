@@ -90,6 +90,72 @@ const dictEn: Dict = {
   "book.success.title": "Your call is booked",
   "book.success.body":
     "Thank you {firstName}! We sent a confirmation to {email}. Please check your inbox (and spam folder).",
+
+  // Process pages (Discover, Design, Develop, Grow)
+  "process.nav.discover": "Discover",
+  "process.nav.design": "Design",
+  "process.nav.develop": "Develop",
+  "process.nav.grow": "Grow",
+
+  // Discover
+  "process.discover.title": "Discover",
+  "process.discover.lead":
+    "We begin with research. Audits, interviews, data, and market signals reveal what matters: opportunities, pain points, and the story only your brand can tell.",
+  "process.discover.what": "What we do",
+  "process.discover.outcomes": "Outcomes",
+  "process.discover.what.1": "Stakeholder interviews & workshops",
+  "process.discover.what.2": "Brand, UX and content audits",
+  "process.discover.what.3": "Competitive & category mapping",
+  "process.discover.what.4": "Analytics, SEO and funnel review",
+  "process.discover.out.1": "Clear goals and success metrics",
+  "process.discover.out.2": "Audience insights and JTBD",
+  "process.discover.out.3": "Brand positioning hypotheses",
+  "process.discover.out.4": "Project roadmap and scope",
+
+  // Design
+  "process.design.title": "Design",
+  "process.design.lead":
+    "We craft systems: typography, color, motion, and components that scale. A visual language that is both beautiful and brutally clear.",
+  "process.design.what": "What we do",
+  "process.design.outcomes": "Outcomes",
+  "process.design.what.1": "Brand identity & design systems",
+  "process.design.what.2": "UI/UX for web & product",
+  "process.design.what.3": "Micro-interactions & motion",
+  "process.design.what.4": "Art direction and content guides",
+  "process.design.out.1": "High-fidelity prototypes",
+  "process.design.out.2": "Design tokens & documentation",
+  "process.design.out.3": "Accessible, responsive layouts",
+  "process.design.out.4": "Conversion-focused UI patterns",
+
+  // Develop
+  "process.develop.title": "Develop",
+  "process.develop.lead":
+    "Performance-first engineering. Modern stacks, clean architecture, and automation that ships fast without breaking.",
+  "process.develop.what": "What we do",
+  "process.develop.outcomes": "Outcomes",
+  "process.develop.what.1": "Jamstack & headless CMS",
+  "process.develop.what.2": "React, TypeScript, accessibility",
+  "process.develop.what.3": "Animations and WebGL",
+  "process.develop.what.4": "CI/CD, testing, and monitoring",
+  "process.develop.out.1": "Lighthouse 90+ scores",
+  "process.develop.out.2": "Scalable component libraries",
+  "process.develop.out.3": "SEO and schema best practices",
+  "process.develop.out.4": "Secure, maintainable codebase",
+
+  // Grow
+  "process.grow.title": "Grow",
+  "process.grow.lead":
+    "Launch is the start. We iterate with content, experiments, and campaigns that compound over time.",
+  "process.grow.what": "What we do",
+  "process.grow.outcomes": "Outcomes",
+  "process.grow.what.1": "Content and SEO programs",
+  "process.grow.what.2": "A/B tests and conversion lifts",
+  "process.grow.what.3": "Performance marketing",
+  "process.grow.what.4": "Analytics and reporting cadence",
+  "process.grow.out.1": "Growth roadmap and KPIs",
+  "process.grow.out.2": "Content calendar and assets",
+  "process.grow.out.3": "Continuous CRO improvements",
+  "process.grow.out.4": "Measurable ROI across channels",
 };
 
 const dictSr: Dict = {
@@ -169,6 +235,72 @@ const dictSr: Dict = {
   "book.success.title": "Termin je uspešno rezervisan",
   "book.success.body":
     "Hvala {firstName}! Poslali smo potvrdu na {email}. Proveri inbox i spam folder.",
+
+  // Process pages (Discover, Design, Develop, Grow)
+  "process.nav.discover": "Istraži",
+  "process.nav.design": "Dizajn",
+  "process.nav.develop": "Razvoj",
+  "process.nav.grow": "Rast",
+
+  // Discover
+  "process.discover.title": "Istraži",
+  "process.discover.lead":
+    "Počinjemo istraživanjem. Auditi, intervjui, podaci i signali sa tržišta otkrivaju prilike, probleme i priču koju samo vaš brend može da ispriča.",
+  "process.discover.what": "Šta radimo",
+  "process.discover.outcomes": "Ishodi",
+  "process.discover.what.1": "Intervjui sa timom i radionice",
+  "process.discover.what.2": "Auditi brenda, UX-a i sadržaja",
+  "process.discover.what.3": "Mapa konkurencije i kategorije",
+  "process.discover.what.4": "Analitika, SEO i pregled levka",
+  "process.discover.out.1": "Jasni ciljevi i metrike uspeha",
+  "process.discover.out.2": "Uvid u publiku i poslove koji se obavljaju (JTBD)",
+  "process.discover.out.3": "Hipoteze o pozicioniranju brenda",
+  "process.discover.out.4": "Plan projekta i obim",
+
+  // Design
+  "process.design.title": "Dizajn",
+  "process.design.lead":
+    "Gradimo sisteme: tipografija, boja, pokret i komponente koje skaliraju. Vizuelni jezik koji je i lep i kristalno jasan.",
+  "process.design.what": "Šta radimo",
+  "process.design.outcomes": "Ishodi",
+  "process.design.what.1": "Identitet brenda i dizajn sistemi",
+  "process.design.what.2": "UI/UX za web i proizvode",
+  "process.design.what.3": "Mikrointerakcije i animacije",
+  "process.design.what.4": "Art direkcija i smernice za sadržaj",
+  "process.design.out.1": "Prototipovi visoke vernosti",
+  "process.design.out.2": "Dizajn tokeni i dokumentacija",
+  "process.design.out.3": "Pristupačni, responzivni rasporedi",
+  "process.design.out.4": "UI šabloni fokusirani na konverziju",
+
+  // Develop
+  "process.develop.title": "Razvoj",
+  "process.develop.lead":
+    "Inženjering sa performansama na prvom mestu. Moderan stack, čista arhitektura i automatizacija — brzo i stabilno isporučivanje.",
+  "process.develop.what": "Šta radimo",
+  "process.develop.outcomes": "Ishodi",
+  "process.develop.what.1": "Jamstack i headless CMS",
+  "process.develop.what.2": "React, TypeScript i pristupačnost",
+  "process.develop.what.3": "Animacije i WebGL",
+  "process.develop.what.4": "CI/CD, testiranje i nadzor",
+  "process.develop.out.1": "Lighthouse 90+ rezultati",
+  "process.develop.out.2": "Skalabilne biblioteke komponenti",
+  "process.develop.out.3": "SEO i schema najbolje prakse",
+  "process.develop.out.4": "Sigurna, održiva baza koda",
+
+  // Grow
+  "process.grow.title": "Rast",
+  "process.grow.lead":
+    "Lansiranje je početak. Iteriramo kroz sadržaj, eksperimente i kampanje koje vremenom multipliciraju rezultate.",
+  "process.grow.what": "Šta radimo",
+  "process.grow.outcomes": "Ishodi",
+  "process.grow.what.1": "Sadržaj i SEO programi",
+  "process.grow.what.2": "A/B testovi i podizanje konverzija",
+  "process.grow.what.3": "Perfomans marketing",
+  "process.grow.what.4": "Analitika i ritam izveštavanja",
+  "process.grow.out.1": "Mapa rasta i KPI",
+  "process.grow.out.2": "Kalendar sadržaja i asseti",
+  "process.grow.out.3": "Kontinuirana CRO poboljšanja",
+  "process.grow.out.4": "Merljiv ROI kroz kanale",
 };
 
 const dictionaries: Record<Lang, Dict> = { en: dictEn, sr: dictSr };
