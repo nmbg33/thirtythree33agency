@@ -420,7 +420,9 @@ export function useI18n() {
   const ctx = useContext(I18nContext);
   if (!ctx) {
     if (typeof console !== "undefined") {
-      console.warn("useI18n called outside I18nProvider. Falling back to default 'en'.");
+      console.warn(
+        "useI18n called outside I18nProvider. Falling back to default 'en'.",
+      );
     }
     const t = (key: string, params?: Record<string, string | number>) => {
       let v = dictionaries.en[key] ?? key;
