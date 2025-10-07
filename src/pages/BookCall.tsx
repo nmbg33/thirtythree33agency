@@ -66,6 +66,7 @@ export default function BookCall() {
           lastName,
           email,
           scheduledAt: scheduled.toISOString(),
+          honeypot: ""
         }),
       });
       if (!res.ok) {
