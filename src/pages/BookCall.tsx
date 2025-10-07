@@ -1,9 +1,36 @@
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import { useI18n } from "../i18n/I18nProvider";
 
 export default function BookCall() {
   const { t } = useI18n();
+  const hostRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const loadCalendlyScript = (cb: () => void) => {
+      if ((window as any).Calendly) return cb();
+      const s = document.createElement("script");
+      s.src = "https://assets.calendly.com/assets/external/widget.js";
+      s.async = true;
+      s.onload = cb;
+      document.head.appendChild(s);
+    };
+
+    const init = () => {
+      const Calendly = (window as any).Calendly;
+      if (!Calendly || !hostRef.current) return;
+      Calendly.initInlineWidget({
+        url: "https://calendly.com/nemanja3975439/30min?hide_event_type_details=1&hide_gdpr_banner=1",
+        parentElement: hostRef.current,
+      });
+      hostRef.current.style.minHeight = "700px";
+    };
+
+    if (document.readyState !== "loading") loadCalendlyScript(init);
+    else document.addEventListener("DOMContentLoaded", () => loadCalendlyScript(init));
+  }, []);
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
@@ -25,16 +52,23 @@ export default function BookCall() {
             </p>
           </motion.div>
 
-          <div className="booking-wrapper min-h-[700px]">
-            <div
-              className="calendly-inline-widget"
-              data-url="https://calendly.com/nemanja3975439/30min?hide_event_type_details=1&hide_gdpr_banner=1"
-              style={{ minWidth: 320, height: 700 }}
-            />
-            <script
-              src="https://assets.calendly.com/assets/external/widget.js"
-              async
-            ></script>
+          <link
+            href="https://assets.calendly.com/assets/external/widget.css"
+            rel="stylesheet"
+          />
+          <div id="calendly-host" ref={hostRef} style={{ minHeight: 700 }}>
+            <noscript>
+              <p>Please enable JavaScript to book a call.</p>
+              <p>
+                <a
+                  href="https://calendly.com/nemanja3975439/30min"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Open Calendly
+                </a>
+              </p>
+            </noscript>
           </div>
         </div>
       </section>
