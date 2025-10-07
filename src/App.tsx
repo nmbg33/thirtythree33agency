@@ -161,22 +161,16 @@ function App() {
           </div>
         </div>
         {/* Marquee */}
-        {
-          // Using local placeholders; replace with real logos via Builder or data layer if available
-        }
-        {(() => {
-          const logos = [
+        <ClientsMarquee
+          logos={[
             { src: "/placeholder.svg", alt: "Client A" },
             { src: "/placeholder.svg", alt: "Client B" },
             { src: "/placeholder.svg", alt: "Client C" },
             { src: "/placeholder.svg", alt: "Client D" },
             { src: "/placeholder.svg", alt: "Client E" },
             { src: "/placeholder.svg", alt: "Client F" },
-          ];
-          // Lazy import to avoid circulars
-          const Marquee = require("./components/ClientsMarquee").default;
-          return <Marquee logos={logos} />;
-        })()}
+          ]}
+        />
       </section>
 
       {/* Services Section */}
