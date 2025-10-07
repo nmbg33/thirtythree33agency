@@ -22,7 +22,8 @@ export default async function handler(req: any, res: any) {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
   if (req.method === "OPTIONS") return res.status(200).end();
-  if (req.method === "GET") return res.status(200).json({ ok: true, route: "book-a-call" });
+  if (req.method === "GET")
+    return res.status(200).json({ ok: true, route: "book-a-call" });
   if (req.method !== "POST")
     return res.status(405).json({ ok: false, error: "Method not allowed" });
 
