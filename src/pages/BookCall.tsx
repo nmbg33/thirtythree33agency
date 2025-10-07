@@ -38,6 +38,7 @@ export default function BookCall() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [honeypot, setHoneypot] = useState("");
 
   const timeSlots = useMemo(
     () => generateTimeSlots(selectedDay),
@@ -66,7 +67,7 @@ export default function BookCall() {
           lastName,
           email,
           scheduledAt: scheduled.toISOString(),
-          honeypot: ""
+          honeypot
         }),
       });
       if (!res.ok) {
@@ -114,6 +115,19 @@ export default function BookCall() {
                 transition={{ duration: 0.8, delay: 0.1 }}
                 className="w-full max-w-[360px] sm:max-w-md md:max-w-lg lg:max-w-none mx-auto lg:mx-0 p-8 bg-gray-50 rounded-2xl border border-gray-200 text-center sm:text-left"
               >
+                <div className="sr-only" aria-hidden>
+                  <label htmlFor="company" className="block text-sm mb-2">Company</label>
+                  <input
+                    id="company"
+                    name="company"
+                    type="text"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    className="w-full px-4 py-2 border rounded"
+                  />
+                </div>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium mb-2">
