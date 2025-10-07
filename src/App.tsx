@@ -152,6 +152,32 @@ function App() {
         </motion.div>
       </section>
 
+      {/* Clients / Partners */}
+      <section className="bg-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center py-10">
+            <h3 className="text-sm uppercase tracking-widest text-gray-500">Clients & Partners</h3>
+          </div>
+        </div>
+        {/* Marquee */}
+        {
+          // Using local placeholders; replace with real logos via Builder or data layer if available
+        }
+        {(() => {
+          const logos = [
+            { src: "/placeholder.svg", alt: "Client A" },
+            { src: "/placeholder.svg", alt: "Client B" },
+            { src: "/placeholder.svg", alt: "Client C" },
+            { src: "/placeholder.svg", alt: "Client D" },
+            { src: "/placeholder.svg", alt: "Client E" },
+            { src: "/placeholder.svg", alt: "Client F" },
+          ];
+          // Lazy import to avoid circulars
+          const Marquee = require("./components/ClientsMarquee").default;
+          return <Marquee logos={logos} />;
+        })()}
+      </section>
+
       {/* Services Section */}
       <section id="services" className="py-32 bg-gray-50">
         <div className="container mx-auto px-6">
