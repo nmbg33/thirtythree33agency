@@ -71,10 +71,8 @@ export default function BookCall() {
         }),
       });
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
         throw new Error(
-          data?.error ||
-            "Submission didn’t go through. Please try again later or email us directly at blyze33@gmail.com.",
+          "Email service temporarily unavailable. Please contact us directly at blyze33@gmail.com."
         );
       }
       setSubmitted(true);
