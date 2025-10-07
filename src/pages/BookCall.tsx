@@ -1,87 +1,9 @@
-import { useMemo, useState } from "react";
-import { DayPicker } from "react-day-picker";
-import "react-day-picker/dist/style.css";
-import "../daypicker.css";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import { useI18n } from "../i18n/I18nProvider";
 
-function formatTime(date: Date) {
-  return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-}
-
-function generateTimeSlots(date: Date | undefined) {
-  if (!date) return [] as Date[];
-  const slots: Date[] = [];
-  const start = new Date(date);
-  start.setHours(9, 0, 0, 0);
-  const end = new Date(date);
-  end.setHours(18, 0, 0, 0);
-  const stepMinutes = 30;
-  for (
-    let t = new Date(start);
-    t <= end;
-    t = new Date(t.getTime() + stepMinutes * 60000)
-  ) {
-    slots.push(new Date(t));
-  }
-  return slots;
-}
-
 export default function BookCall() {
-  const [firstName, setFirstName] = useState("");
   const { t } = useI18n();
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [selectedDay, setSelectedDay] = useState<Date | undefined>(undefined);
-  const [selectedTime, setSelectedTime] = useState<Date | undefined>(undefined);
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [honeypot, setHoneypot] = useState("");
-  const [message, setMessage] = useState("");
-
-  const timeSlots = useMemo(
-    () => generateTimeSlots(selectedDay),
-    [selectedDay],
-  );
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    if (!firstName || !lastName || !email || !selectedDay || !selectedTime)
-      return;
-    try {
-      setLoading(true);
-      const scheduled = new Date(selectedDay);
-      scheduled.setHours(
-        selectedTime.getHours(),
-        selectedTime.getMinutes(),
-        0,
-        0,
-      );
-      const res = await fetch("/api/book-a-call", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: `${firstName} ${lastName}`.trim(),
-          email,
-          message,
-          scheduledAt: scheduled.toISOString(),
-          honeypot,
-        }),
-      });
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}) as any);
-        throw new Error(data?.error || `Request failed (${res.status})`);
-      }
-      setSubmitted(true);
-    } catch (err: any) {
-      setError(err?.message || "Something went wrong");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
