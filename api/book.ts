@@ -89,7 +89,8 @@ export default async function handler(req: any, res: any) {
   if (!RESEND_API_KEY || !TO || !FROM) {
     res.status(503).json({
       ok: false,
-      error: "Email service temporarily unavailable. Please contact us directly at blyze33@gmail.com."
+      error:
+        "Email service temporarily unavailable. Please contact us directly at blyze33@gmail.com.",
     });
     return;
   }

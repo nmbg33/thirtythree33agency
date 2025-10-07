@@ -72,7 +72,7 @@ export default function BookCall() {
       });
       if (!res.ok) {
         throw new Error(
-          "Email service temporarily unavailable. Please contact us directly at blyze33@gmail.com."
+          "Email service temporarily unavailable. Please contact us directly at blyze33@gmail.com.",
         );
       }
       setSubmitted(true);
