@@ -31,7 +31,10 @@ export default function BookCall() {
               data-url="https://calendly.com/nemanja3975439/30min?hide_event_type_details=1&hide_gdpr_banner=1"
               style={{ minWidth: 320, height: 700 }}
             />
-            <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <script
+              src="https://assets.calendly.com/assets/external/widget.js"
+              async
+            ></script>
           </div>
         </div>
       </section>
