@@ -10,6 +10,11 @@
   ],
   "routes": [
     {
+      "src": "^/api/book-a-call$",
+      "methods": ["POST", "OPTIONS"],
+      "dest": "/api/book-a-call.ts"
+    },
+    {
       "src": "^/api/book$",
       "methods": ["POST", "OPTIONS"],
       "dest": "/api/book.ts"
