@@ -87,7 +87,10 @@ export default async function handler(req: any, res: any) {
   const FROM = process.env.BOOK_A_CALL_FROM || "website@notifications.local";
 
   if (!RESEND_API_KEY || !TO || !FROM) {
-    res.status(500).json({ ok: false, error: "Email service not configured" });
+    res.status(503).json({
+      ok: false,
+      error: "Email service temporarily unavailable. Please contact us directly at blyze33@gmail.com."
+    });
     return;
   }
 
