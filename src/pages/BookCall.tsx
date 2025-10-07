@@ -29,7 +29,10 @@ export default function BookCall() {
     };
 
     if (document.readyState !== "loading") loadCalendlyScript(init);
-    else document.addEventListener("DOMContentLoaded", () => loadCalendlyScript(init));
+    else
+      document.addEventListener("DOMContentLoaded", () =>
+        loadCalendlyScript(init),
+      );
   }, []);
 
   return (
