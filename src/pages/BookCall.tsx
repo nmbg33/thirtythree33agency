@@ -72,7 +72,7 @@ export default function BookCall() {
         }),
       });
       if (!res.ok) {
-        const data = await res.json().catch(() => ({} as any));
+        const data = await res.json().catch(() => ({}) as any);
         throw new Error(data?.error || `Request failed (${res.status})`);
       }
       setSubmitted(true);
