@@ -16,14 +16,28 @@ const schema = z.object({
   honeypot: z.string().optional(),
 });
 
+function checkEnv() {
+  const required = ["RESEND_API_KEY", "BOOK_A_CALL_FROM", "BOOK_A_CALL_TO"] as const;
+  const present: Record<string, boolean> = {};
+  const missing: string[] = [];
+  for (const k of required) {
+    const ok = !!process.env[k];
+    present[k] = ok;
+    if (!ok) missing.push(k);
+  }
+  return { present, missing };
+}
+
 export default async function handler(req: any, res: any) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
   if (req.method === "OPTIONS") return res.status(200).end();
-  if (req.method === "GET")
-    return res.status(200).json({ ok: true, route: "book-a-call" });
+  if (req.method === "GET") {
+    const probe = checkEnv();
+    return res.status(200).json({ ok: true, route: "book-a-call", env: probe });
+  }
   if (req.method !== "POST")
     return res.status(405).json({ ok: false, error: "Method not allowed" });
 
@@ -37,6 +51,11 @@ export default async function handler(req: any, res: any) {
   }
 
   if (body.honeypot) return res.status(200).json({ ok: true });
+
+  const scheduledTime = (body.time ?? body.scheduledAt ?? "").trim();
+  if (!scheduledTime) {
+    return res.status(400).json({ ok: false, error: "Missing time" });
+  }
 
   const ip =
     (req.headers["x-forwarded-for"]?.split(",")[0] as string | undefined) ||
@@ -52,16 +71,14 @@ export default async function handler(req: any, res: any) {
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
   const TO = process.env.BOOK_A_CALL_TO;
   const FROM = process.env.BOOK_A_CALL_FROM; // must be verified on Resend
-  if (!RESEND_API_KEY || !TO || !FROM)
-    return res
-      .status(500)
-      .json({ ok: false, error: "Email service not configured" });
-
-  const scheduledTime = body.time ?? body.scheduledAt ?? "N/A";
+  const envProbe = checkEnv();
+  if (envProbe.missing.length) {
+    console.error("MISSING_ENV:", envProbe.missing.join(", "));
+    return res.status(500).json({ ok: false, error: "Email service not configured", details: envProbe });
+  }
 
   const subject = `New call booked from ${body.name}`;
-  const text = `Name: ${body.name}\nEmail: ${body.email}\nMessage: ${body.message ?? "N/A"}\nScheduled Time: ${scheduledTime}`;
-  const html = `<div style="font-family:Inter,system-ui,sans-serif;color:#111"><h2 style="margin:0 0 8px">New call booked</h2><ul style="line-height:1.6"><li><strong>Name:</strong> ${body.name}</li><li><strong>Email:</strong> ${body.email}</li><li><strong>Scheduled Time:</strong> ${scheduledTime}</li></ul><p style="white-space:pre-line">${body.message ?? ""}</p></div>`;
+  const text = `Name: ${body.name}\nEmail: ${body.email}\nMessage: ${body.message ?? "—"}\nScheduled Time: ${scheduledTime}`;
 
   try {
     const resp = await fetch("https://api.resend.com/emails", {
@@ -75,7 +92,6 @@ export default async function handler(req: any, res: any) {
         to: [TO],
         subject,
         text,
-        html,
         reply_to: body.email,
       }),
     });
@@ -83,7 +99,7 @@ export default async function handler(req: any, res: any) {
       const err = await resp.text();
       return res
         .status(502)
-        .json({ ok: false, error: "Email provider error", details: err });
+        .json({ ok: false, error: "Email send failed", providerError: err });
     }
     return res.status(200).json({ ok: true });
   } catch (e: any) {
