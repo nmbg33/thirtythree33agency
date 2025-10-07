@@ -39,6 +39,7 @@ export default function BookCall() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [honeypot, setHoneypot] = useState("");
+  const [message, setMessage] = useState("");
 
   const timeSlots = useMemo(
     () => generateTimeSlots(selectedDay),
@@ -164,6 +165,17 @@ export default function BookCall() {
                     type="email"
                     className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
                     required
+                  />
+                </div>
+
+                <div className="mt-6">
+                  <label className="block text-sm font-medium mb-2">{t("book.message") || "Message (optional)"}</label>
+                  <textarea
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    rows={4}
+                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent"
+                    placeholder="Your message (optional)"
                   />
                 </div>
 
