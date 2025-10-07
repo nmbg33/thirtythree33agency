@@ -60,21 +60,20 @@ export default function BookCall() {
         0,
         0,
       );
-      const res = await fetch("/api/book", {
+      const res = await fetch("/api/book-a-call", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          firstName,
-          lastName,
+          name: `${firstName} ${lastName}`.trim(),
           email,
+          message,
           scheduledAt: scheduled.toISOString(),
           honeypot,
         }),
       });
       if (!res.ok) {
-        throw new Error(
-          "Email service temporarily unavailable. Please contact us directly at blyze33@gmail.com.",
-        );
+        const data = await res.json().catch(() => ({} as any));
+        throw new Error(data?.error || `Request failed (${res.status})`);
       }
       setSubmitted(true);
     } catch (err: any) {
