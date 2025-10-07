@@ -169,7 +169,9 @@ export default function BookCall() {
                 </div>
 
                 <div className="mt-6">
-                  <label className="block text-sm font-medium mb-2">{t("book.message") || "Message (optional)"}</label>
+                  <label className="block text-sm font-medium mb-2">
+                    {t("book.message") || "Message (optional)"}
+                  </label>
                   <textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
