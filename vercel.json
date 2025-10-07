@@ -11,7 +11,7 @@
   "routes": [
     {
       "src": "^/api/book-a-call$",
-      "methods": ["POST", "OPTIONS"],
+      "methods": ["GET", "POST", "OPTIONS"],
       "dest": "/api/book-a-call.ts"
     },
     {
