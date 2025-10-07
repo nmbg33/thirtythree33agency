@@ -17,7 +17,11 @@ const schema = z.object({
 });
 
 function checkEnv() {
-  const required = ["RESEND_API_KEY", "BOOK_A_CALL_FROM", "BOOK_A_CALL_TO"] as const;
+  const required = [
+    "RESEND_API_KEY",
+    "BOOK_A_CALL_FROM",
+    "BOOK_A_CALL_TO",
+  ] as const;
   const present: Record<string, boolean> = {};
   const missing: string[] = [];
   for (const k of required) {
@@ -74,7 +78,13 @@ export default async function handler(req: any, res: any) {
   const envProbe = checkEnv();
   if (envProbe.missing.length) {
     console.error("MISSING_ENV:", envProbe.missing.join(", "));
-    return res.status(500).json({ ok: false, error: "Email service not configured", details: envProbe });
+    return res
+      .status(500)
+      .json({
+        ok: false,
+        error: "Email service not configured",
+        details: envProbe,
+      });
   }
 
   const subject = `New call booked from ${body.name}`;
