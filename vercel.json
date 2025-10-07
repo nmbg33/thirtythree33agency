@@ -9,7 +9,11 @@
     }
   ],
   "routes": [
-    { "src": "^/api/book$", "methods": ["POST", "OPTIONS"], "dest": "/api/book.ts" },
+    {
+      "src": "^/api/book$",
+      "methods": ["POST", "OPTIONS"],
+      "dest": "/api/book.ts"
+    },
     { "src": "^/api/(.*)$", "dest": "/api/$1" },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }

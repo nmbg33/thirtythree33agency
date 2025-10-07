@@ -67,14 +67,14 @@ export default function BookCall() {
           lastName,
           email,
           scheduledAt: scheduled.toISOString(),
-          honeypot
+          honeypot,
         }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         throw new Error(
           data?.error ||
-            "Submission didn’t go through. Please try again later or email us directly at blyze33@gmail.com."
+            "Submission didn’t go through. Please try again later or email us directly at blyze33@gmail.com.",
         );
       }
       setSubmitted(true);
@@ -116,7 +116,9 @@ export default function BookCall() {
                 className="w-full max-w-[360px] sm:max-w-md md:max-w-lg lg:max-w-none mx-auto lg:mx-0 p-8 bg-gray-50 rounded-2xl border border-gray-200 text-center sm:text-left"
               >
                 <div className="sr-only" aria-hidden>
-                  <label htmlFor="company" className="block text-sm mb-2">Company</label>
+                  <label htmlFor="company" className="block text-sm mb-2">
+                    Company
+                  </label>
                   <input
                     id="company"
                     name="company"

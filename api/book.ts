@@ -70,7 +70,9 @@ export default async function handler(req: any, res: any) {
       parsed = { kind: "simple", ...v };
     }
   } catch (err: any) {
-    res.status(400).json({ ok: false, error: err?.message || "Invalid payload" });
+    res
+      .status(400)
+      .json({ ok: false, error: err?.message || "Invalid payload" });
     return;
   }
 

@@ -157,7 +157,9 @@ function App() {
       <section className="bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center py-10">
-            <h3 className="text-sm uppercase tracking-widest text-gray-500">Clients & Partners</h3>
+            <h3 className="text-sm uppercase tracking-widest text-gray-500">
+              Clients & Partners
+            </h3>
           </div>
         </div>
         {/* Marquee */}
