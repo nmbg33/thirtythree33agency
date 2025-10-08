@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navbar from "./components/Navbar";
+import CalendlyInline from "./components/CalendlyInline";
 import { useI18n } from "./i18n/I18nProvider";
 import { Link } from "react-router-dom";
 
@@ -379,71 +380,9 @@ function App() {
             <p className="text-xl text-gray-600">{t("contact.subtitle")}</p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="max-w-2xl mx-auto"
-          >
-            <div className="p-8 bg-gray-50 rounded-2xl shadow-sm">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <motion.div whileFocus={{ scale: 1.02 }}>
-                    <label className="block text-sm font-medium mb-2">
-                      {t("contact.form.name")}
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Your name"
-                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
-                    />
-                  </motion.div>
-                  <motion.div whileFocus={{ scale: 1.02 }}>
-                    <label className="block text-sm font-medium mb-2">
-                      {t("contact.form.email")}
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="your@email.com"
-                      className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
-                    />
-                  </motion.div>
-                </div>
-                <motion.div whileFocus={{ scale: 1.02 }}>
-                  <label className="block text-sm font-medium mb-2">
-                    {t("contact.form.company")}
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Your company"
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all"
-                  />
-                </motion.div>
-                <motion.div whileFocus={{ scale: 1.02 }}>
-                  <label className="block text-sm font-medium mb-2">
-                    {t("contact.form.details")}
-                  </label>
-                  <textarea
-                    placeholder="Tell us about your project..."
-                    rows={4}
-                    className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all resize-none"
-                  />
-                </motion.div>
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <button
-                    type="submit"
-                    className="w-full text-lg py-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors shadow-lg"
-                  >
-                    {t("contact.form.submit")}
-                  </button>
-                </motion.div>
-              </form>
-            </div>
-          </motion.div>
+          <div className="calendly-section w-full max-w-none px-0">
+            <CalendlyInline />
+          </div>
         </div>
       </section>
 
