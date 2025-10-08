@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
