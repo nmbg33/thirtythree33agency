@@ -39,13 +39,10 @@ function loadCalendlyScript(): Promise<void> {
 
 function responsiveHeight(): number {
   const w = typeof window === "undefined" ? 1440 : window.innerWidth;
-  if (w <= 480) return 1160;
-  if (w <= 640) return 1080;
-  if (w <= 768) return 1024;
-  if (w <= 900) return 960;
-  if (w <= 1024) return 900;
-  if (w <= 1280) return 840;
-  return 780;
+  if (w <= 767) return 1160;          // mobile
+  if (w <= 1023) return 1024;         // tablet
+  if (w <= 1279) return 900;          // laptop
+  return 840;                          // desktop ≥1280
 }
 
 export default function CalendlyInline({ url, minHeightBase }: Props) {
