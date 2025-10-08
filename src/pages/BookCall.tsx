@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
+import CalendlyInline from "../components/CalendlyInline";
 import { useI18n } from "../i18n/I18nProvider";
 
 export default function BookCall() {
