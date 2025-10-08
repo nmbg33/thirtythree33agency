@@ -31,7 +31,11 @@ export default function BookCall() {
     };
 
     const applyHeight = () => {
-      if (hostRef.current) hostRef.current.style.minHeight = `${responsiveHeight()}px`;
+      const h = `${responsiveHeight()}px`;
+      if (widgetRef.current) {
+        widgetRef.current.style.minHeight = h;
+        widgetRef.current.style.height = h;
+      }
     };
 
     const loadCalendlyScript = (cb: () => void) => {
