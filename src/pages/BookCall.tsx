@@ -1,9 +1,43 @@
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import { useI18n } from "../i18n/I18nProvider";
 
 export default function BookCall() {
   const { t } = useI18n();
+  const hostRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const loadCalendlyScript = (cb: () => void) => {
+      if ((window as any).Calendly) return cb();
+      const existing = document.querySelector<HTMLScriptElement>(
+        'script[src*="assets.calendly.com/assets/external/widget.js"]',
+      );
+      if (existing) {
+        existing.addEventListener("load", cb, { once: true });
+        return;
+      }
+      const s = document.createElement("script");
+      s.src = "https://assets.calendly.com/assets/external/widget.js";
+      s.async = true;
+      s.onload = cb;
+      document.head.appendChild(s);
+    };
+
+    const init = () => {
+      const Calendly = (window as any).Calendly;
+      if (!Calendly || !hostRef.current) return;
+      // Clear any prior iframe (hot reload)
+      hostRef.current.querySelector("iframe")?.remove();
+      hostRef.current.style.minHeight = "700px";
+      Calendly.initInlineWidget({
+        url: "https://calendly.com/nemanja3975439/30min",
+        parentElement: hostRef.current,
+      });
+    };
+
+    loadCalendlyScript(init);
+  }, []);
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
@@ -26,16 +60,7 @@ export default function BookCall() {
           </motion.div>
         </div>
         <div className="calendly-section w-full max-w-none px-0">
-          <div
-            className="calendly-inline-widget"
-            data-url="https://calendly.com/nemanja3975439/30min"
-            style={{ minWidth: 320, height: 700 }}
-          />
-          <script
-            type="text/javascript"
-            src="https://assets.calendly.com/assets/external/widget.js"
-            async
-          ></script>
+          <div id="calendly-host" ref={hostRef} style={{ minHeight: 700 }} />
         </div>
       </section>
 
