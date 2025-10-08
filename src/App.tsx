@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Navbar from "./components/Navbar";
-import CalendlyInline from "./components/CalendlyInline";
 import { useI18n } from "./i18n/I18nProvider";
 import { Link } from "react-router-dom";
 
@@ -380,9 +379,6 @@ function App() {
             <p className="text-xl text-gray-600">{t("contact.subtitle")}</p>
           </motion.div>
 
-          <div className="calendly-section w-full max-w-none px-0">
-            <CalendlyInline />
-          </div>
         </div>
       </section>
 
