@@ -5,7 +5,7 @@ import { useI18n } from "../i18n/I18nProvider";
 
 export default function BookCall() {
   const { t } = useI18n();
-  const hostRef = useRef<HTMLDivElement | null>(null);
+  const widgetRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const ensureWidgetCss = () => {
@@ -51,36 +51,28 @@ export default function BookCall() {
     };
 
     const init = () => {
-      const Calendly = (window as any).Calendly;
-      if (!Calendly || !hostRef.current) return;
-      // Clear any prior iframe (hot reload)
-      hostRef.current.querySelector("iframe")?.remove();
+      // Ensure container height reflects breakpoint
       applyHeight();
-      Calendly.initInlineWidget({
-        url: "https://calendly.com/nemanja3975439/30min?hide_event_type_details=1&hide_gdpr_banner=1",
-        parentElement: hostRef.current,
-      });
-      // If iframe didn't mount yet, retry a few times
-      let tries = 0;
-      const t = setInterval(() => {
-        tries++;
-        if (!hostRef.current) return clearInterval(t);
-        if (hostRef.current.querySelector("iframe")) return clearInterval(t);
-        Calendly.initInlineWidget({
-          url: "https://calendly.com/nemanja3975439/30min?hide_event_type_details=1&hide_gdpr_banner=1",
-          parentElement: hostRef.current,
-        });
-        if (tries > 5) clearInterval(t);
-      }, 600);
-
       window.addEventListener("resize", applyHeight, { passive: true });
     };
 
     ensureWidgetCss();
-    applyHeight();
+    // Set initial height and keep it responsive
+    const setHeight = () => {
+      const w = window.innerWidth;
+      const h = w <= 767 ? 1160 : w <= 1023 ? 1024 : w <= 1279 ? 900 : 840;
+      if (widgetRef.current) widgetRef.current.style.height = `${h}px`;
+    };
+    setHeight();
+    window.addEventListener("resize", setHeight, { passive: true });
+
+    // Load Calendly script so it auto-initializes inline widget div
     loadCalendlyScript(init);
 
-    return () => window.removeEventListener("resize", applyHeight);
+    return () => {
+      window.removeEventListener("resize", applyHeight);
+      window.removeEventListener("resize", setHeight);
+    };
   }, []);
 
   return (
@@ -104,7 +96,12 @@ export default function BookCall() {
           </motion.div>
         </div>
         <div className="calendly-section w-full max-w-none px-0">
-          <div id="calendly-host" ref={hostRef} style={{ minHeight: 700 }} />
+          <div
+            ref={widgetRef}
+            className="calendly-inline-widget"
+            data-url="https://calendly.com/nemanja3975439/30min?hide_event_type_details=1&hide_gdpr_banner=1"
+            style={{ minWidth: 320, height: 840 }}
+          />
         </div>
       </section>
 
