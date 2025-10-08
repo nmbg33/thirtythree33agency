@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
-import CalendlyInline from "../components/CalendlyInline";
 import { useI18n } from "../i18n/I18nProvider";
 
 export default function BookCall() {
@@ -27,7 +26,16 @@ export default function BookCall() {
           </motion.div>
         </div>
         <div className="calendly-section w-full max-w-none px-0">
-          <CalendlyInline />
+          <div
+            className="calendly-inline-widget"
+            data-url="https://calendly.com/nemanja3975439/30min"
+            style={{ minWidth: 320, height: 700 }}
+          />
+          <script
+            type="text/javascript"
+            src="https://assets.calendly.com/assets/external/widget.js"
+            async
+          ></script>
         </div>
       </section>
 
