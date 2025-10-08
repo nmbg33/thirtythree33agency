@@ -25,10 +25,9 @@ export default function BookCall() {
               {t("book.lead")}
             </p>
           </motion.div>
-
-          <div className="calendly-section">
-            <CalendlyInline />
-          </div>
+        </div>
+        <div className="calendly-section w-full max-w-none px-0">
+          <CalendlyInline />
         </div>
       </section>
 
