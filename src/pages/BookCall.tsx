@@ -8,6 +8,18 @@ export default function BookCall() {
   const hostRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    const responsiveHeight = () => {
+      const w = window.innerWidth;
+      if (w <= 767) return 1160; // mobile
+      if (w <= 1023) return 1024; // tablet
+      if (w <= 1279) return 900; // laptop
+      return 840; // desktop
+    };
+
+    const applyHeight = () => {
+      if (hostRef.current) hostRef.current.style.minHeight = `${responsiveHeight()}px`;
+    };
+
     const loadCalendlyScript = (cb: () => void) => {
       if ((window as any).Calendly) return cb();
       const existing = document.querySelector<HTMLScriptElement>(
@@ -29,14 +41,19 @@ export default function BookCall() {
       if (!Calendly || !hostRef.current) return;
       // Clear any prior iframe (hot reload)
       hostRef.current.querySelector("iframe")?.remove();
-      hostRef.current.style.minHeight = "700px";
+      applyHeight();
       Calendly.initInlineWidget({
-        url: "https://calendly.com/nemanja3975439/30min",
+        url: "https://calendly.com/nemanja3975439/30min?hide_event_type_details=1&hide_gdpr_banner=1",
         parentElement: hostRef.current,
       });
+      // keep responsive
+      window.addEventListener("resize", applyHeight, { passive: true });
     };
 
+    applyHeight();
     loadCalendlyScript(init);
+
+    return () => window.removeEventListener("resize", applyHeight);
   }, []);
 
   return (
