@@ -26,23 +26,8 @@ export default function BookCall() {
             </p>
           </motion.div>
 
-          <link
-            href="https://assets.calendly.com/assets/external/widget.css"
-            rel="stylesheet"
-          />
-          <div id="calendly-host" ref={hostRef} style={{ minHeight: 700 }}>
-            <noscript>
-              <p>Please enable JavaScript to book a call.</p>
-              <p>
-                <a
-                  href="https://calendly.com/nemanja3975439/30min"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Open Calendly
-                </a>
-              </p>
-            </noscript>
+          <div className="calendly-section">
+            <CalendlyInline />
           </div>
         </div>
       </section>
