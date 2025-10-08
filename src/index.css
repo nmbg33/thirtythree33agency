@@ -84,12 +84,14 @@
     padding-block: 64px;
     overflow: visible !important;
   }
-  .calendly-section * {
+  .calendly-section *,
+  body, html {
     overflow: visible !important;
   }
   #calendly-host {
     width: 100%;
     display: block;
-    min-height: 780px;
+    min-height: 840px;
+    height: auto !important;
   }
 }
