@@ -18,8 +18,12 @@ export default function BookCall() {
             transition={{ duration: 0.8 }}
             className="text-center mb-8"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">{t("book.title")}</h1>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">{t("book.lead")}</p>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+              {t("book.title")}
+            </h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              {t("book.lead")}
+            </p>
           </motion.div>
         </div>
       </section>

@@ -85,7 +85,8 @@
     overflow: visible !important;
   }
   .calendly-section *,
-  body, html {
+  body,
+  html {
     overflow: visible !important;
   }
   #calendly-host {
