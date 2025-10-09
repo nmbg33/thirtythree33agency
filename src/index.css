@@ -94,4 +94,22 @@
     min-height: 840px;
     height: auto !important;
   }
+
+  /* Full-bleed utility: stretches section to viewport edges even inside centered wrappers */
+  .full-bleed {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Calendly section spacing */
+  .full-bleed.bookacall {
+    padding-block: 64px;
+  }
+  /* Ensure no ancestor clips the iframe */
+  .full-bleed,
+  .full-bleed * {
+    overflow: visible !important;
+  }
 }
