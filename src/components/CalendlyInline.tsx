@@ -68,12 +68,15 @@ export default function CalendlyInline({ url, minHeightBase }: Props) {
 
       const h = minHeightBase ?? responsiveHeight();
       hostRef.current.style.minHeight = `${h}px`;
+      hostRef.current.style.height = `${h}px`;
 
       Calendly.initInlineWidget({ url: calendlyUrl, parentElement: hostRef.current });
 
       resizeHandler = () => {
         if (!hostRef.current) return;
-        hostRef.current.style.minHeight = `${minHeightBase ?? responsiveHeight()}px`;
+        const rh = minHeightBase ?? responsiveHeight();
+        hostRef.current.style.minHeight = `${rh}px`;
+        hostRef.current.style.height = `${rh}px`;
       };
       window.addEventListener("resize", resizeHandler, { passive: true });
     }
